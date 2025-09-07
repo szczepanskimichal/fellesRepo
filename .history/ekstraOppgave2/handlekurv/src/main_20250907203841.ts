@@ -1,4 +1,4 @@
-import model from './Model/model';
+import {model} from './Model/model';
 import { updateViewProductsPage } from './Views/productsView';
 import { updateViewProductDetailPage } from './Views/productDetailView';
 import { updateViewCartPage } from './Views/cartView';

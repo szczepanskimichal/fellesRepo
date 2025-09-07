@@ -1,7 +1,7 @@
-import model from './Model/model';
-import { updateViewProductsPage } from './Views/productsView';
-import { updateViewProductDetailPage } from './Views/productDetailView';
-import { updateViewCartPage } from './Views/cartView';
+import {model} from './Model/model';
+import { updateViewProductsPage } from '../Views/productsView.js';
+import { updateViewProductDetailPage } from '../Views/productDetailView.js';
+import { updateViewCartPage } from '../Views/cartView.js';
 function updateView() {
     if (model.app.currentPage === 'products') {
         updateViewProductsPage();
