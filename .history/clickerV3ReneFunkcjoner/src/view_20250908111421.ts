@@ -14,20 +14,6 @@ export function updateView(): void {
     upgrade.textContent = 'Kjøp oppgradering (10 poeng)';
     app.append(image, pointsInfo, upgrade);
 
-    // image.addEventListener('click', doClick);
-    // upgrade.addEventListener('click', buyUpgrade);
-
-    image.addEventListener('click', () => {
-        const newModel = doClick(model);
-        model.points = newModel.points;
-        model.smileyIndex = newModel.smileyIndex;
-        updateView();
-    });
-    
-    upgrade.addEventListener('click', () => {
-        const newModel = buyUpgrade(model);
-        model.points = newModel.points;
-        model.pointsPerClick = newModel.pointsPerClick;
-        updateView();
-    });
+    image.addEventListener('click', doClick);
+    upgrade.addEventListener('click', buyUpgrade);
 }

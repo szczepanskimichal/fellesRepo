@@ -1,6 +1,6 @@
 
-// import { model } from './model';
-// import { updateView } from './view';    
+import { model } from './model';
+import { updateView } from './view';
 
 // function doClick(): void {
 //     model.points += model.pointsPerClick;
@@ -20,7 +20,7 @@ type ModelType = {
     smileyIndex: number;
 };
 
-function doClick(model: ModelType): ModelType {
+function doClickPure(model: ModelType): ModelType {
     return {
         ...model,
         points: model.points + model.pointsPerClick,
@@ -28,7 +28,7 @@ function doClick(model: ModelType): ModelType {
     };
 }
 
-function buyUpgrade(model: ModelType): ModelType {
+function buyUpgradePure(model: ModelType): ModelType {
     if (model.points < 10) return model;
     return {
         ...model,
@@ -38,4 +38,4 @@ function buyUpgrade(model: ModelType): ModelType {
 }
 
 // export { doClick, buyUpgrade };
-export { doClick, buyUpgrade };
+export { doClickPure, buyUpgradePure };

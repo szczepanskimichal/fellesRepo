@@ -1,6 +1,6 @@
 
 // import { model } from './model';
-// import { updateView } from './view';    
+import { updateView } from './view';    
 
 // function doClick(): void {
 //     model.points += model.pointsPerClick;

@@ -1,6 +1,6 @@
 
-// import { model } from './model';
-// import { updateView } from './view';    
+import { model } from './model';
+import { updateView } from './view';
 
 // function doClick(): void {
 //     model.points += model.pointsPerClick;
@@ -38,4 +38,4 @@ function buyUpgrade(model: ModelType): ModelType {
 }
 
 // export { doClick, buyUpgrade };
-export { doClick, buyUpgrade };
+export { doClickPure, buyUpgradePure };
