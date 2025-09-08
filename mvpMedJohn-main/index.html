@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+ <!-- Header -->
+  <header class="header">
+    <div class="header__nav-group">
+      <a href="#" class="header__logo" aria-label="Confluence Home"><svg width="24px" height="24px" viewBox="0 -5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <linearGradient x1="99.140087%" y1="112.708084%" x2="33.8589812%" y2="37.7549606%" id="linearGradient-1"> <stop stop-color="currentColor" offset="18%"> </stop> <stop stop-color="currentColor" offset="100%"> </stop> </linearGradient> <linearGradient x1="0.92569163%" y1="-12.5823074%" x2="66.1800713%" y2="62.3057471%" id="linearGradient-2"> <stop stop-color="currentColor" offset="18%"> </stop> <stop stop-color="currentColor" offset="100%"> </stop> </linearGradient> </defs> <g> <path d="M9.26054484,187.329971 C6.61939782,191.637072 3.65318655,196.634935 1.13393863,200.616972 C-1.12098385,204.42751 0.0895487945,209.341911 3.85635171,211.669157 L56.6792921,244.175582 C58.5334859,245.320393 60.7697695,245.67257 62.8860683,245.153045 C65.0023672,244.633521 66.8213536,243.285826 67.9346417,241.412536 C70.0475593,237.877462 72.7699724,233.285929 75.7361837,228.369333 C96.6621947,193.831256 117.710105,198.057091 155.661356,216.179423 L208.037333,241.087471 C210.020997,242.031639 212.302415,242.132457 214.361632,241.366949 C216.420848,240.601441 218.082405,239.034833 218.967618,237.024168 L244.119464,180.137925 C245.896483,176.075046 244.088336,171.3377 240.056161,169.492071 C229.003977,164.291043 207.021507,153.92962 187.233221,144.380857 C116.044151,109.802148 55.5415672,112.036965 9.26054484,187.329971 Z" fill="url(#linearGradient-1)"> </path> <path d="M246.11505,58.2319428 C248.756197,53.9248415 251.722408,48.9269787 254.241656,44.9449416 C256.496579,41.1344037 255.286046,36.2200025 251.519243,33.8927572 L198.696303,1.38633231 C196.82698,0.127283893 194.518741,-0.298915762 192.323058,0.209558312 C190.127374,0.718032386 188.241461,2.11550922 187.115889,4.06811236 C185.002971,7.60318607 182.280558,12.1947186 179.314347,17.1113153 C158.388336,51.6493918 137.340426,47.4235565 99.3891748,29.3012247 L47.1757299,4.5150757 C45.1920661,3.57090828 42.9106475,3.47008979 40.8514312,4.2355977 C38.7922149,5.00110562 37.1306578,6.56771434 36.2454445,8.57837881 L11.0935983,65.4646223 C9.31657942,69.5275012 11.1247267,74.2648471 15.1569014,76.1104765 C26.2090859,81.3115044 48.1915557,91.6729274 67.9798418,101.22169 C139.331444,135.759766 199.834028,133.443683 246.11505,58.2319428 Z" fill="url(#linearGradient-2)"> </path> </g> </g></svg> Confluence</a>
+
+      <nav class="header__nav" aria-label="Main navigation">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <input type="checkbox" id="spaces-dropdown" class="dropdown-toggle">
+            <label for="spaces-dropdown" class="header__nav-link header__nav-dropdown">
+              Spaces
+              <span class="header__nav-arrow" aria-hidden="true">▼</span>
+            </label>
+            <!-- <div class="dropdown-menu">
+              <div class="dropdown-section">
+                <h4 class="dropdown-title">Recent Spaces</h4>
+                <a href="#" class="dropdown-item">🏢 Engineering Team</a>
+                <a href="#" class="dropdown-item">📊 Product Management</a>
+                <a href="#" class="dropdown-item">🎨 Design System</a>
+              </div>  -->
+              <!-- <div class="dropdown-section">
+                <h4 class="dropdown-title">All Spaces</h4>
+                <a href="#" class="dropdown-item">📝 Documentation Hub</a>
+                <a href="#" class="dropdown-item">🚀 Marketing</a>
+                <a href="#" class="dropdown-item">💡 Innovation Lab</a>
+              </div>
+              <div class="dropdown-footer">
+                <a href="#" class="dropdown-link">!!!View all spaces!!!</a>
+              </div>
+            </div>
+          </li> -->
+          <li><a href="#" class="header__nav-link">People</a></li>
+          <li class="header__nav-item">
+            <input type="checkbox" id="create-dropdown" class="dropdown-toggle">
+            <label for="create-dropdown" class="header__nav-link header__nav-link--active header__nav-button" aria-current="page">
+              Create
+              <span class="header__nav-arrow" aria-hidden="true">▼</span>
+            </label>
+            <!-- <div class="dropdown-menu dropdown-menu--create">
+               <div class="dropdown-section">
+                <a href="#" class="dropdown-item dropdown-item--primary">📄 Page</a>
+                <a href="#" class="dropdown-item dropdown-item--primary">📝 Blog post</a>
+                <a href="#" class="dropdown-item dropdown-item--primary">📋 Meeting notes</a>
+              </div>
+              <div class="dropdown-section">
+                <h4 class="dropdown-title">Project Management</h4>
+                <a href="#" class="dropdown-item">📁 Add project</a>
+                <a href="#" class="dropdown-item">🤝 Add meeting</a>
+                <a href="#" class="dropdown-item">🐛 Add issue</a>
+                <a href="#" class="dropdown-item">📊 Add report</a>
+              </div>
+              <div class="dropdown-section">
+                <h4 class="dropdown-title">Templates</h4>
+                <a href="#" class="dropdown-item">📋 Project plan</a>
+                <a href="#" class="dropdown-item">📈 Status report</a>
+                <a href="#" class="dropdown-item">🎯 Retrospective</a>
+              </div>
+            </div> -->
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header__actions">
+      <form class="header__search" role="search">
+        <label for="header-search" class="sr-only">Search</label>
+        <div class="header__search-wrapper">
+          <span class="header__search-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+</svg></span>
+          <input type="search" id="header-search" class="header__search-input" placeholder="Search" aria-label="Search Confluence">
+        </div>
+      </form>
+
+      <div class="header__buttons">
+        <div class="header__btn-wrapper">
+          <input type="checkbox" id="help-dropdown" class="dropdown-toggle">
+          <label for="help-dropdown" class="header__btn" title="Help" aria-label="Help">❓</label>
+          <!-- <div class="dropdown-menu dropdown-menu--small">
+            <div class="dropdown-section">
+              <a href="#" class="dropdown-item">📚 Documentation</a>
+              <a href="#" class="dropdown-item">🎥 Tutorials</a>
+              <a href="#" class="dropdown-item">💬 Contact Support</a>
+              <a href="#" class="dropdown-item">🆕 What's New</a>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="header__btn-wrapper">
+          <input type="checkbox" id="settings-dropdown" class="dropdown-toggle">
+          <label for="settings-dropdown" class="header__btn" title="Settings" aria-label="Settings">⚙️</label>
+          <!-- <div class="dropdown-menu dropdown-menu--small">
+            <div class="dropdown-section">
+              <a href="#" class="dropdown-item">⚙️ General Settings</a>
+              <a href="#" class="dropdown-item">🔒 Privacy</a>
+              <a href="#" class="dropdown-item">🎨 Appearance</a>
+              <a href="#" class="dropdown-item">🔔 Notifications</a>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="header__btn-wrapper">
+          <input type="checkbox" id="notifications-dropdown" class="dropdown-toggle">
+          <label for="notifications-dropdown" class="header__btn header__btn--notification" title="Notifications" aria-label="Notifications">
+            🔔
+            <span class="notification-badge">3</span>
+          </label>
+          <!-- <div class="dropdown-menu dropdown-menu--notifications">
+            <div class="dropdown-section">
+              <h4 class="dropdown-title">Recent Notifications</h4>
+              <a href="#" class="dropdown-item notification-item">
+                <div class="notification-content">
+                  <strong>Jane commented</strong> on "Q3 Planning"
+                  <span class="notification-time">2m ago</span>
+                </div>
+              </a>
+              <a href="#" class="dropdown-item notification-item">
+                <div class="notification-content">
+                  <strong>New page created</strong> in Engineering Team
+                  <span class="notification-time">5m ago</span>
+                </div>
+              </a>
+              <a href="#" class="dropdown-item notification-item">
+                <div class="notification-content">
+                  <strong>Meeting reminder</strong> Daily standup in 15 min
+                  <span class="notification-time">10m ago</span>
+                </div>
+              </a>
+            </div>
+            <div class="dropdown-footer">
+              <a href="#" class="dropdown-link">View all notifications</a>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="header__btn-wrapper">
+          <input type="checkbox" id="profile-dropdown" class="dropdown-toggle">
+          <label for="profile-dropdown" class="header__btn" title="Profile" aria-label="User profile">👤</label>
+          <!-- <div class="dropdown-menu dropdown-menu--profile">
+            <div class="dropdown-section">
+              <div class="profile-info">
+                <div class="profile-avatar">👤</div>
+                <div class="profile-details">
+                  <strong>Rach Admin</strong>
+                  <span class="profile-email">rach@company.com</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-section">
+              <a href="#" class="dropdown-item">👤 View Profile</a>
+              <a href="#" class="dropdown-item">⚙️ Account Settings</a>
+              <a href="#" class="dropdown-item">📊 Activity</a>
+              <a href="#" class="dropdown-item">🎯 Goals</a>
+            </div>
+            <div class="dropdown-footer">
+              <a href="#" class="dropdown-link">Sign Out</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <button class="header__hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+<div class="main-grid">
+  <aside class="sidebar">
+    <nav class="sidebar-nav" aria-label="Sidebar Meny">
+      <ul class="sidebar-list">
+        <li><a href="#"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <rect x="2" y="2" width="7" height="7" fill="currrentColor" />
+              <rect x="11" y="2" width="7" height="4" fill="currrentColor" />
+              <rect x="2" y="11" width="4" height="7" fill="currrentColor" />
+              <rect x="8" y="11" width="10" height="7" fill="currrentColor" />
+            </svg><span class="sr-only">Home</span></a></li>
+        <li><a href="#" class="is-active"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <rect x="3" y="3" width="14" height="14" rx="2" fill="currrentColor" />
+              <rect x="6" y="6" width="8" height="2" fill="#fff" />
+              <rect x="6" y="10" width="8" height="2" fill="#fff" />
+            </svg><span class="sr-only">Agenda</span></a></li>
+        <li><a href="#"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <rect x="3" y="14" width="3" height="3" fill="currentColor" />
+              <rect x="8.5" y="9" width="3" height="8" fill="currentColor" />
+              <rect x="14" y="5" width="3" height="12" fill=currentColor" />
+            </svg><span class="sr-only">Quote</span></a></li>
+        <li><a href="#"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <circle cx="10" cy="10" r="3" fill="currrentColor" />
+              <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42" stroke="#000" stroke-width="1.5" stroke-linecap="round" />
+            </svg><span class="sr-only">List</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main-section">
+    <div class="breadcrumb-appmeny">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ul class="nav-list">
+          <li><a href="#">Pages</a></li>
+          <li><a href="#"> sample space</a></li>
+          <li><a href="#"> Engineering news</a></li>
+          <li><a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="11" width="18" height="10" rx="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0" />
+              </svg></a></li>
+        </ul>
+      </nav>
+      <nav class="app-meny" aria-label="Appmeny">
+        <ul class="nav-list">
+          <li><a href="#" accesskey="e"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M16.862 3.487a2.06 2.06 0 0 1 2.916 2.915l-1.06 1.06-2.916-2.916 1.06-1.06z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M15.803 4.547 4.5 15.85V19.5h3.65L19.453 8.197l-3.65-3.65z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>Edit</a>
+
+          </li>
+          <li><a href="#" accesskey="s"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#888" stroke-width="1.5">
+                <polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9" fill="none" stroke="currentColor" stroke-width="1.5" />
+              </svg>Save for later</a></li>
+          <li><a href="#" accesskey="w"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <ellipse cx="12" cy="12" rx="9" ry="5" stroke="currentColor" stroke-width="1.5" fill="none" />
+                <circle cx="12" cy="12" r="2.5" fill=currentColor" />
+              </svg>Watching</a></li>
+          <li><a href="#" accesskey="h"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <circle cx="18" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="18" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <line x1="7.8" y1="13.2" x2="16.2" y2="17.8" stroke="currentColor" stroke-width="1.5" />
+                <line x1="16.2" y1="6.2" x2="7.8" y2="10.8" stroke="currentColor" stroke-width="1.5" />
+              </svg>Share</a></li>
+          <li><a href="#">...</a></li>
+        </ul>
+      </nav>
+
+    </div>
+    <h1>2020-05-19 Meeting Notes</h1>
+    <p>Created by Rach Admin, last modified just a moment ago</p>
+
+    <section class="section-container" aria-label="main container">
+      <div class="agenda-kolonne" aria-label="agenda">
+        <h2>Date</h2>
+        <label for="meeting-date" class="form-group__label sr-only">Meeting Date</label>
+        <input type="date" id="meeting-date" value="2020-05-19" class="meeting-date form-group__input">
+
+        <h2>Attendees</h2>
+        <ul class="agenda-list">
+          <li contenteditable="true">@Omar Daroe</li>
+          <li contenteditable="true">@Jie Yang Song</li>
+          <li contenteditable="true">@Jane Rotanson</li>
+        </ul>
+        <h2>Agenda</h2>
+        <ul class="agenda-list">
+          <li class="agenda-item">
+                <div class="agenda-item__text">Review high priority issues</div>
+                <div class="agenda-item__actions">
+                  <a href="#edit-item-1" class="agenda-item__btn">Edit</a>
+                  <a href="#delete-item-1" class="agenda-item__btn agenda-item__btn--danger">Delete</a>
+                </div>
+              </li>
+              <li class="agenda-item">
+                <div class="agenda-item__text">Assign owners and timelines</div>
+                <div class="agenda-item__actions">
+                  <a href="#edit-item-2" class="agenda-item__btn">Edit</a>
+                  <a href="#delete-item-2" class="agenda-item__btn agenda-item__btn--danger">Delete</a>
+                </div>
+              </li>
+        </ul>
+        <div class="agenda-item__add"><a href="#add-agenda-item" class="agenda__add-btn">+ Add New Item</a>
+        </div></div>
+      <div class="chart-kolonne" aria-label="chart">
+
+        <h2>Breakdown of issues by priority</h2>
+
+        <div class="svg-chart" aria-label="svg chart">
+          <img src="/img/diagram.svg" alt="Bar chart showing breakdown of issues by priority, with 5 high priority, 3 medium priority, and 2 low priority issues">
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<div class="theme-toggle">
+  <input type="checkbox" id="dark-mode" class="theme-toggle-input">
+  <label for="dark-mode" class="theme-toggle-label">🌙 Dark mode</label>
+    </div>
+  
+  <!-- Add Agenda Item Modal -->
+  <div id="add-agenda-item" class="modal" role="dialog" aria-labelledby="add-modal-title" aria-modal="true">
+    <div class="modal__content">
+      <header class="modal__header">
+        <h3 id="add-modal-title" class="modal__title">Add New Agenda Item</h3>
+        <a href="#" class="modal__close" aria-label="Close modal">x</a>
+      </header>
+
+      <form>
+        <div class="form-group">
+          <label for="agenda-text" class="form-group__label">Agenda Item</label>
+          <input type="text" id="agenda-text" class="form-group__input" placeholder="Enter agenda item..." required>
+        </div>
+
+        <div class="form-actions">
+          <a href="#" class="btn btn--secondary">Cancel</a>
+          <button type="submit" class="btn btn--primary">Add Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- Edit Agenda Item Modal -->
+  <div id="edit-item-1" class="modal" role="dialog" aria-labelledby="edit-modal-title-1" aria-modal="true">
+    <div class="modal__content">
+      <header class="modal__header">
+        <h3 id="edit-modal-title-1" class="modal__title">Edit Agenda Item</h3>
+        <a href="#" class="modal__close" aria-label="Close modal">x</a>
+      </header>
+
+      <form>
+        <div class="form-group">
+          <label for="edit-text-1" class="form-group__label">Agenda Item</label>
+          <input type="text" id="edit-text-1" class="form-group__input" value="Review high priority issues" required>
+        </div>
+
+        <div class="form-actions">
+          <a href="#" class="btn btn--secondary">Cancel</a>
+          <button type="submit" class="btn btn--primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Agenda Item 2 Modal -->
+  <div id="edit-item-2" class="modal" role="dialog" aria-labelledby="edit-modal-title-2" aria-modal="true">
+    <div class="modal__content">
+      <header class="modal__header">
+        <h3 id="edit-modal-title-2" class="modal__title">Edit Agenda Item</h3>
+        <a href="#" class="modal__close" aria-label="Close modal">x</a>
+      </header>
+
+      <form>
+        <div class="form-group">
+          <label for="edit-text-2" class="form-group__label">Agenda Item</label>
+          <input type="text" id="edit-text-2" class="form-group__input" value="Assign owners and timelines" required>
+        </div>
+
+        <div class="form-actions">
+          <a href="#" class="btn btn--secondary">Cancel</a>
+          <button type="submit" class="btn btn--primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modals -->
+  <div id="delete-item-1" class="modal" role="dialog" aria-labelledby="delete-modal-title-1" aria-modal="true">
+    <div class="modal__content">
+      <header class="modal__header">
+        <h3 id="delete-modal-title-1" class="modal__title">Delete Agenda Item</h3>
+        <a href="#" class="modal__close" aria-label="Close modal">x</a>
+      </header>
+
+      <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-secondary);">
+        Are you sure you want to delete "Review high priority issues"? This action cannot be undone.
+      </p>
+
+      <div class="form-actions">
+        <a href="#" class="btn btn--secondary">Cancel</a>
+        <button type="button" class="btn" style="background: var(--color-danger); color: white; border-color: var(--color-danger);">Delete Item</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="delete-item-2" class="modal" role="dialog" aria-labelledby="delete-modal-title-2" aria-modal="true">
+    <div class="modal__content">
+      <header class="modal__header">
+        <h3 id="delete-modal-title-2" class="modal__title">Delete Agenda Item</h3>
+        <a href="#" class="modal__close" aria-label="Close modal">×</a>
+      </header>
+
+      <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-secondary);">
+        Are you sure you want to delete "Assign owners and timelines"? This action cannot be undone.
+      </p>
+
+      <div class="form-actions">
+        <a href="#" class="btn btn--secondary">Cancel</a>
+        <button type="button" class="btn" style="background: var(--color-danger); color: white; border-color: var(--color-danger);">Delete Item</button>
+      </div>
+    </div>
+  </div>
+
+    <footer>
+      <p></p>
+    </footer>
+</body>
+</html>
