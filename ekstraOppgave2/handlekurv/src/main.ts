@@ -1,5 +1,5 @@
-import model from './Model/model';
-import { updateViewProductsPage } from './Views/productsView';
+import {model} from './Model/model';
+import { updateViewProductsPage } from './Views';
 import { updateViewProductDetailPage } from './Views/productDetailView';
 import { updateViewCartPage } from './Views/cartView';
 function updateView() {
