@@ -28,7 +28,7 @@ function doClickImpl(model:Model): Model {
     // pointsPerClick: model.pointsPerClick,
     // ;
 
-    //FUNKSJONELL VERSJON!!!!!!!!!!!!!!!!!!!!!!!!!
+    //FUNKSJONELL VERSJON
     // return Object.freeze({
     //     points: model.points + model.pointsPerClick,
     //     pointsPerClick: model.pointsPerClick,

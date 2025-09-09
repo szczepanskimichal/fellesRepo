@@ -22,35 +22,19 @@ import { model } from "../model";
 
 
 function doClickImpl(model:Model): Model {     
-    //IMPERATIVE VERSJON
     // model.points += model.pointsPerClick;
     // model.smileyIndex = 1 - model.smileyIndex;
-    // pointsPerClick: model.pointsPerClick,
-    // ;
-
-    //FUNKSJONELL VERSJON!!!!!!!!!!!!!!!!!!!!!!!!!
-    // return Object.freeze({
-    //     points: model.points + model.pointsPerClick,
-    //     pointsPerClick: model.pointsPerClick,
-    //     smileyIndex: 1 - model.smileyIndex
-    // });
-
-// or
-
-    return Object.freeze({
-        ...model,
+    return {
         points: model.points + model.pointsPerClick,
+        pointsPerClick: model.pointsPerClick,
         smileyIndex: 1 - model.smileyIndex
-    });
+    }
 }
 
 function buyUpgradeImpl(model:Model): Model {
-    if (model.points < 10) return model;
-    return Object.freeze({
-        points: model.points - 10,
-        pointsPerClick: model.pointsPerClick + 1,
-        smileyIndex: model.smileyIndex
-    });
+    if (model.points < 10) return; 
+    model.points -= 10;
+    model.pointsPerClick++;
 }
 
 export { doClickImpl, buyUpgradeImpl };
