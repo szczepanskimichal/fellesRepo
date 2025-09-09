@@ -62,8 +62,7 @@ if (typeof identifier === "string") {
 
 }
 
-// addNewPizza({ id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ name: "Meat Lovers", price: 14 })
+addNewPizza({ id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
 // addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
 // addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 // addNewPizza({ id: 8, name: "Buffalo Chicken", price: 13 })
