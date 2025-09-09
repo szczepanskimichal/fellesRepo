@@ -19,6 +19,11 @@ let person1: Person = {
     name: "Joe",
     age: 42,
     isStudent: true,
+    address: {
+        street: "123 Main St",
+        city: "Anytown",
+        country: "USA"
+    }
 }
 
 let person2: Person = { 

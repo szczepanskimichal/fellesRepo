@@ -19,6 +19,7 @@ let person1: Person = {
     name: "Joe",
     age: 42,
     isStudent: true,
+   
 }
 
 let person2: Person = { 
