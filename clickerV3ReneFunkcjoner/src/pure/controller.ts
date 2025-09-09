@@ -45,11 +45,17 @@ function doClickImpl(model:Model): Model {
 }
 
 function buyUpgradeImpl(model:Model): Model {
+    // if (model.points < 10) return model;
+    // return Object.freeze({
+    //     points: model.points - 10,
+    //     pointsPerClick: model.pointsPerClick + 1,
+    //     smileyIndex: model.smileyIndex
+    // });
     if (model.points < 10) return model;
     return Object.freeze({
+        ...model,
         points: model.points - 10,
         pointsPerClick: model.pointsPerClick + 1,
-        smileyIndex: model.smileyIndex
     });
 }
 
