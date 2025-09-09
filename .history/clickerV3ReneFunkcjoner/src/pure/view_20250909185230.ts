@@ -18,14 +18,14 @@ export function updateView(): void {
     // upgrade.addEventListener('click', buyUpgrade);
 
     image.addEventListener('click', () => {
-        const newModel = doClickImpl(model);
+        const newModel = doClick(model);
         model.points = newModel.points;
         model.smileyIndex = newModel.smileyIndex;
         updateView();
     });
     
     upgrade.addEventListener('click', () => {
-        const newModel = buyUpgradeImpl(model);
+        const newModel = buyUpgrade(model);
         model.points = newModel.points;
         model.pointsPerClick = newModel.pointsPerClick;
         updateView();

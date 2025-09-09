@@ -1,6 +1,5 @@
 import { model } from "../model";
 import {doClickImpl, buyUpgradeImpl} from "./controller";
-import type { Model } from "../types";
 
 // import type { Model } from "../types";
 // import { updateView } from "./view";

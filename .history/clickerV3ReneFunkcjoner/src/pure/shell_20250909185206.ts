@@ -1,6 +1,5 @@
 import { model } from "../model";
 import {doClickImpl, buyUpgradeImpl} from "./controller";
-import type { Model } from "../types";
 
 // import type { Model } from "../types";
 // import { updateView } from "./view";
@@ -21,4 +20,4 @@ function doClick(model: Model): Model {
 //         points: model.points - 10,
 //         pointsPerClick: model.pointsPerClick + 1
 //     };
-// }
+}

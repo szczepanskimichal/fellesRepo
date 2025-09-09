@@ -18,7 +18,7 @@
 
 
 import { model } from "../model";
-import { updateView } from "../pure/view";
+import { updateView } from "./view";
 import type { Model } from "../types";
 
 function doClickImpl(model: Model): Model {
@@ -28,6 +28,7 @@ function doClickImpl(model: Model): Model {
         smileyIndex: 1 - model.smileyIndex
     };
 }
+import type { Model } from "../types";
 
 function buyUpgradeImpl(model: Model): Model {
     if (model.points < 10) return model;
@@ -38,4 +39,5 @@ function buyUpgradeImpl(model: Model): Model {
     };
 }
 
-export { doClickImpl, buyUpgradeImpl };
+// export { doClick, buyUpgrade };
+export { doClick, buyUpgrade };
