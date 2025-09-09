@@ -2,17 +2,16 @@
 
 // let numberOfWheels: number = 4;
 // let isStudent: boolean = true;
-type Address = {
-    street: string
-    city: string
-    country: string
-}
 
 type Person = {
     name: string
     age: number
     isStudent: boolean
-    address: Address
+    address: {
+        street: string
+        city: string
+        country: string
+    }
 }
 
 let person1: Person = {
