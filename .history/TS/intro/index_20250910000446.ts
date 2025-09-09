@@ -21,11 +21,11 @@ let cashInRegister = 0
 let nextOrderId = 1
 const orderQueue: Order []= []
 
-function addNewPizza(pizzaObj: Pizza): void {
+function addNewPizza(pizzaObj: Pizza){
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName: string ): Order | undefined {
+function placeOrder(pizzaName: string) {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if (!selectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`)
@@ -47,13 +47,11 @@ function completeOrder(orderId: number): Order | undefined {
     return order
 }
 
-export function getPizzaDetail(identifier: string | number) : Pizza | undefined {
+function getPizzaDetail(identifier: string | number) {
 if (typeof identifier === "string") {
     return menu.find(pizza=> pizza.name === identifier) 
-} else if (typeof identifier === "number") {
-    return menu.find(pizza=>pizza.id === identifier) 
 } else {
-    throw new Error("Invalid identifier type")
+    return menu.find(pizza=>pizza.id === identifier) 
 }
 
 }

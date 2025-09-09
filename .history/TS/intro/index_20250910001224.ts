@@ -25,7 +25,7 @@ function addNewPizza(pizzaObj: Pizza): void {
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName: string ): Order | undefined {
+function placeOrder(pizzaName: string) {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if (!selectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`)
@@ -47,7 +47,7 @@ function completeOrder(orderId: number): Order | undefined {
     return order
 }
 
-export function getPizzaDetail(identifier: string | number) : Pizza | undefined {
+export function getPizzaDetail(identifier: string | number) {
 if (typeof identifier === "string") {
     return menu.find(pizza=> pizza.name === identifier) 
 } else if (typeof identifier === "number") {

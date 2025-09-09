@@ -47,7 +47,7 @@ function completeOrder(orderId: number): Order | undefined {
     return order
 }
 
-export function getPizzaDetail(identifier: string | number) : Pizza | undefined {
+export function getPizzaDetail(identifier: string | number) : Pizza{
 if (typeof identifier === "string") {
     return menu.find(pizza=> pizza.name === identifier) 
 } else if (typeof identifier === "number") {
