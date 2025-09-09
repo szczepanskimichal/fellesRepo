@@ -2,7 +2,7 @@ import { model } from './model';
 import { doClick, buyUpgrade } from './controller.ts';
 
 export function updateView(): void {
-    var smiley: string = model.smileyIndex == 0 ? '😀' : '😁';
+    const smiley: string = model.smileyIndex == 0 ? '😀' : '😁';
 
     const app: HTMLElement = document.getElementById('app')!;
     app.replaceChildren();

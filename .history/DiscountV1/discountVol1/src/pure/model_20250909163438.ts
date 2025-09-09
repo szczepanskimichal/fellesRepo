@@ -1,4 +1,4 @@
-import type { Model } from './types';
+
 
 // export interface Model  {
 //     price: number;

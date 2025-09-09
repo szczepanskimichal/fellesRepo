@@ -9,6 +9,6 @@ import type { Model } from './types';
 
 export const model : Model = {
     price: 500,
-    discountType: 'percentDiscount',
+    discountType: 0,
     newPrice: 0,
 };
