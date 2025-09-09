@@ -12,11 +12,11 @@ let nextOrderId = 1
 type Order = { id: number; pizza: { name: string; price: number }; status: string }
 const orderQueue: Order[] = []
 
-function addNewPizza(pizzaObj: Pizza){
+function addNewPizza(pizzaObj) {
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName) {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if (!selectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`)
@@ -30,7 +30,7 @@ function placeOrder(pizzaName: string) {
 
 
 function completeOrder(orderId: number) {
-    const order = orderQueue.findById(orderId)
+    const order = orderQueue.find(order => order.id === orderId)
     if (order) {
         order.status = "completed"
     }

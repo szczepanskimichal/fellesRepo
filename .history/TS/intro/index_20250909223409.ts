@@ -16,7 +16,7 @@ function addNewPizza(pizzaObj: Pizza){
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName): Order | undefined {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if (!selectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`)
@@ -30,7 +30,7 @@ function placeOrder(pizzaName: string) {
 
 
 function completeOrder(orderId: number) {
-    const order = orderQueue.findById(orderId)
+    const order = orderQueue.find(order => order.id === orderId)
     if (order) {
         order.status = "completed"
     }
