@@ -1,20 +1,19 @@
-let cashInRegister = 0
-let nextOrderId = 1
-let nextPizzaId = 1
-
 const menu : Pizza[] = [
     { id: nextPizzaId++, name: "Margherita", price: 8 },
-    { id: nextPizzaId++, name: "Pepperoni", price: 10 },
-    { id: nextPizzaId++, name: "Hawaiian", price: 10 },
-    { id: nextPizzaId++, name: "Veggie", price: 9 },
+    { id: 2, name: "Pepperoni", price: 10 },
+    { id: 3, name: "Hawaiian", price: 10 },
+    { id: 4, name: "Veggie", price: 9 },
 ]
 
 type Pizza = { 
     id: number;
     name: string; 
-    price: number;
+    price: number 
 }
 
+let cashInRegister = 0
+let nextOrderId = 1
+let nextPizzaId = 5
 
 type Order = {
     id: number; 
@@ -61,7 +60,7 @@ if (typeof identifier === "string") {
 
 }
 
-addNewPizza({ id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
 // addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
 // addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 // addNewPizza({ id: 8, name: "Buffalo Chicken", price: 13 })
@@ -70,5 +69,5 @@ placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
 
 console.log("Menu:", menu)
-// console.log("Cash in register:", cashInRegister)
-// console.log("Order queue:", orderQueue)
+console.log("Cash in register:", cashInRegister)
+console.log("Order queue:", orderQueue)
