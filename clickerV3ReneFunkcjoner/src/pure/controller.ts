@@ -28,37 +28,37 @@ function doClick(model:Model): Model {
     // ;
 
     //FUNKSJONELL VERSJON!!!!!!!!!!!!!!!!!!!!!!!!!
-    // return Object.freeze({
-    //     points: model.points + model.pointsPerClick,
-    //     pointsPerClick: model.pointsPerClick,
-    //     smileyIndex: 1 - model.smileyIndex
-    // });
+    return Object.freeze({
+        points: model.points + model.pointsPerClick,
+        pointsPerClick: model.pointsPerClick,
+        smileyIndex: 1 - model.smileyIndex
+    });
 
 // or
 
-    return Object.freeze({
-        ...model,
-        points: model.points + model.pointsPerClick,
-        smileyIndex: 1 - model.smileyIndex
-    });
+    // return Object.freeze({
+    //     ...model,
+    //     points: model.points + model.pointsPerClick,
+    //     smileyIndex: 1 - model.smileyIndex
+    // });
 }
 
 function buyUpgrade(model:Model): Model {
 
-    
+
     //IMPERATIVE VERSJON
-    // if (model.points < 10) return model;
-    // return Object.freeze({
-    //     points: model.points - 10,
-    //     pointsPerClick: model.pointsPerClick + 1,
-    //     smileyIndex: model.smileyIndex
-    // });
     if (model.points < 10) return model;
     return Object.freeze({
-        ...model,
         points: model.points - 10,
         pointsPerClick: model.pointsPerClick + 1,
+        smileyIndex: model.smileyIndex
     });
+    // if (model.points < 10) return model;
+    // return Object.freeze({
+    //     ...model,
+    //     points: model.points - 10,
+    //     pointsPerClick: model.pointsPerClick + 1,
+    // });
 }
 
 export { doClick, buyUpgrade };

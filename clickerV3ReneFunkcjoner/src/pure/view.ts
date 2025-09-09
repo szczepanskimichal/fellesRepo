@@ -1,6 +1,6 @@
 import type { Model } from "../types";
 
-export function updateView(model:Model): HTMLElement {
+export function updateView(model:Model, handleEvent:Function): HTMLElement {
     const smiley: string = model.smileyIndex == 0 ? '😀' : '😁';
 
     const mainElement: HTMLElement = document.createElement('div');
@@ -11,22 +11,8 @@ export function updateView(model:Model): HTMLElement {
     pointsInfo.textContent = '' + model.points;
     upgrade.textContent = 'Kjøp oppgradering (10 poeng)';
     mainElement.append(image, pointsInfo, upgrade); // husk om append!"!!!!!!!"
-
-    // image.addEventListener('click', doClick);
-    // upgrade.addEventListener('click', buyUpgrade);
-
-    // image.addEventListener('click', () => {
-    //     const newModel = doClick(model);
-    //     model.points = newModel.points;
-    //     model.smileyIndex = newModel.smileyIndex;
-    //     updateView();
-    // });
+    image.addEventListener('click', () => handleEvent("click"));
+    upgrade.addEventListener('click', () => handleEvent("buy"));
     
-    // upgrade.addEventListener('click', () => {
-    //     const newModel = buyUpgrade(model);
-    //     model.points = newModel.points;
-    //     model.pointsPerClick = newModel.pointsPerClick;
-    //     updateView();
-    // });
     return mainElement;
 }

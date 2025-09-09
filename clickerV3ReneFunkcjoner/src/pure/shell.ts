@@ -1,13 +1,15 @@
 import { model } from "../model";
-import {doClick, buyUpgrade} from "./controller";
+import { doClick, buyUpgrade } from "./controller";
 import { updateView } from "../pure/view";
 
 
-
-function render(): void {
-    const newModel = doClick(model);
-    const element = updateView(newModel);
-    document.getElementById('app')!.replaceWith(element);
+let appModel = model;
+function render(action: string | null): void {
+    if(action === "click") appModel = doClick(appModel);
+    else if(action === "buy") appModel = buyUpgrade(appModel);
+    const element = updateView(appModel, render);
+    app.innerHTML = "";
+    app.appendChild(element);
     
 }
 
