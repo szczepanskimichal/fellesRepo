@@ -1,0 +1,16 @@
+{
+  "name": "discountcalculatorvol0",
+  "version": "1.0.0",
+  "description": "ts - koble til TS!!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "typescript": "^5.9.2"
+  }
+}
