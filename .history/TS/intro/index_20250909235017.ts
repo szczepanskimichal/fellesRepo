@@ -49,11 +49,9 @@ function completeOrder(orderId: number): Order | undefined {
 
 function getPizzaDetail(identifier: string | number) {
 if (typeof identifier === "string") {
-    return menu.find(pizza=> pizza.name === identifier) 
+    return menu.find(pizzaObj => pizzaObj.name === identifier)
 } else {
-    return menu.find(pizza=>pizza.id === identifier) 
-}
-
+    return menu.find(pizzaObj => pizzaObj.id === identifier) 
 }
 
 addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })

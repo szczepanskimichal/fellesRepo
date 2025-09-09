@@ -38,7 +38,7 @@ function placeOrder(pizzaName: string) {
 }
 
 
-function completeOrder(orderId: number): Order | undefined {
+function completeOrder(orderId) {
     const order = orderQueue.find(order => order.id === orderId)
     // order.status = "completed" - it does not work 
     if (order) {
@@ -47,19 +47,9 @@ function completeOrder(orderId: number): Order | undefined {
     return order
 }
 
-function getPizzaDetail(identifier: string | number) {
-if (typeof identifier === "string") {
-    return menu.find(pizza=> pizza.name === identifier) 
-} else {
-    return menu.find(pizza=>pizza.id === identifier) 
-}
-
-}
-
 addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
-// addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
-// addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
-// addNewPizza({ id: 8, name: "Buffalo Chicken", price: 13 })
+addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
+addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
