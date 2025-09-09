@@ -23,10 +23,10 @@ function placeOrder(pizzaName) {
     }
     cashInRegister += selectedPizza.price;
     const newOrder = {id:nextOrderId++,name: pizzaName, status: "in queque"};
-    orderQueue.push(newOrder);
+    orderQueue.push(newOrder:string);
     return newOrder;
 }
-function completeOrder(orderId) {
+function completeOrder(orderId: number) {
     const order = orderQueue.find(order => order.id === orderId)
     order.status = "completed"
     return order
@@ -34,10 +34,10 @@ function completeOrder(orderId) {
 addNewPizza({name: "Kebab", price: 109});
 addNewPizza({name: "Vegan", price: 119});
 
-placeOrder("Margarita");s
+placeOrder("Margarita");
 placeOrder("Kebab");
 placeOrder("Vegan");
-completeOrder("1");
+completeOrder(1);
 console.log("menu:",menu);
 console.log("Order Queue:",orderQueue);
 console.log("Cash in Register:",cashInRegister);
