@@ -10,7 +10,7 @@ export function updateView(model:Model): HTMLElement {
     image.textContent = smiley;
     pointsInfo.textContent = '' + model.points;
     upgrade.textContent = 'Kjøp oppgradering (10 poeng)';
-    mainElement.append(image, pointsInfo, upgrade); // husk om append!"!!!!!!!"
+    mainElement.append(image, pointsInfo, upgrade);
 
     // image.addEventListener('click', doClick);
     // upgrade.addEventListener('click', buyUpgrade);
@@ -28,5 +28,4 @@ export function updateView(model:Model): HTMLElement {
     //     model.pointsPerClick = newModel.pointsPerClick;
     //     updateView();
     // });
-    return mainElement;
 }

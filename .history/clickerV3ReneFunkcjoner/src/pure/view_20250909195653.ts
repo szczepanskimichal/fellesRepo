@@ -3,6 +3,8 @@ import type { Model } from "../types";
 export function updateView(model:Model): HTMLElement {
     const smiley: string = model.smileyIndex == 0 ? '😀' : '😁';
 
+    // const app: HTMLElement = document.getElementById('app')!;
+    // app.replaceChildren();
     const mainElement: HTMLElement = document.createElement('div');
     const image: HTMLElement = document.createElement('div');
     const pointsInfo: HTMLElement = document.createElement('div');
@@ -10,7 +12,7 @@ export function updateView(model:Model): HTMLElement {
     image.textContent = smiley;
     pointsInfo.textContent = '' + model.points;
     upgrade.textContent = 'Kjøp oppgradering (10 poeng)';
-    mainElement.append(image, pointsInfo, upgrade); // husk om append!"!!!!!!!"
+    mainElement.append(image, pointsInfo, upgrade);
 
     // image.addEventListener('click', doClick);
     // upgrade.addEventListener('click', buyUpgrade);
@@ -28,5 +30,4 @@ export function updateView(model:Model): HTMLElement {
     //     model.pointsPerClick = newModel.pointsPerClick;
     //     updateView();
     // });
-    return mainElement;
 }

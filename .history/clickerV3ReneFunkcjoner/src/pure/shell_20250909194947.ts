@@ -12,4 +12,3 @@ function render(): void {
 }
 
 
-export { render };
