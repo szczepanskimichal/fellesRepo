@@ -35,5 +35,5 @@ let person2: Person = {
 function displayInfo(person){
     console.log(`${person.name} lives at ${person.address?.city }`) // optional chaining and nullish coalescing;
 }
-// displayInfo(person1);
+displayInfo(person1);
 displayInfo(person2);
