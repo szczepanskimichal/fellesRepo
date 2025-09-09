@@ -1,6 +1,6 @@
 
-import { model } from "./model.js";
-import { calculateDiscount } from "./controller.js";
+import { model } from "./model";
+import { calculateDiscount } from "./controller";
 
 function updateView() {
     // <h1>Rabatt Kalkulator</h1>

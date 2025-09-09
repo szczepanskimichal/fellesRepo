@@ -1,5 +1,5 @@
-import { model } from "./model.js";
-import { updateView } from "./view.js";
+import { model } from "./model";
+import { updateView } from "./view.ts/index";
 
 const discounts = {
     percentDiscount: price => price * 0.8, // 20% rabatt

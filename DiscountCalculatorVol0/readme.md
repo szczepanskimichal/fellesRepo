@@ -1,1 +1,1 @@
-ts
+ts - koble til TS!!!
