@@ -18,7 +18,8 @@ type Order = {
 
 let cashInRegister = 100
 let nextOrderId = 1
-const orderQueue: Order []= []
+type Order = { id: number; pizza: { name: string; price: number }; status: string }
+const orderQueue: Order[] = []
 
 function addNewPizza(pizzaObj: Pizza){
     menu.push(pizzaObj)
