@@ -1,8 +1,8 @@
-
-import { model } from "./model";
 import { calculateDiscount } from "./controller";
+import type { Model } from './types';
 
-function updateView() {
+function updateView(model:Model) {
+
     // <h1>Rabatt Kalkulator</h1>
     const h1 = document.createElement("h1");
     h1.textContent = "Rabatt Kalkulator";
