@@ -39,10 +39,11 @@ function placeOrder(pizzaName: string) {
 
 function completeOrder(orderId: number) {
     const order = orderQueue.find(order => order.id === orderId)
-    // order.status = "completed" - it does not work 
-    if (order) {
-        order.status = "completed"
-    }
+    order?
+    .status = "completed"
+    // if (order) {
+    //     order.status = "completed"
+    // }
     return order
 }
 

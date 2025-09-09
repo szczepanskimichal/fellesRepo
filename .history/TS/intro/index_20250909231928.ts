@@ -39,7 +39,7 @@ function placeOrder(pizzaName: string) {
 
 function completeOrder(orderId: number) {
     const order = orderQueue.find(order => order.id === orderId)
-    // order.status = "completed" - it does not work 
+    // order.status = "completed" - it does not work with strict mode
     if (order) {
         order.status = "completed"
     }
