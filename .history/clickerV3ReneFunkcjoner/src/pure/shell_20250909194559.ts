@@ -1,7 +1,6 @@
 import { model } from "../model";
 import {doClick, buyUpgrade} from "./controller";
 import type { Model } from "../types";
-import { updateView } from "./view";
 
 
 

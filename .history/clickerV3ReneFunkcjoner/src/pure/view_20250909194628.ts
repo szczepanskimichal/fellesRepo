@@ -1,3 +1,5 @@
+import { model } from '../model.ts';
+import { doClick, buyUpgrade } from './controller.ts';
 
 export function updateView(): void {
     const smiley: string = model.smileyIndex == 0 ? '😀' : '😁';
