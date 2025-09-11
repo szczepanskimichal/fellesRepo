@@ -1,4 +1,4 @@
-import { model } from "../model";
+import { model } from "../Model/model";
 import type { CartItem, Product } from "./types";
 
 export function calculateCartTotal(cartItems: CartItem[]) {

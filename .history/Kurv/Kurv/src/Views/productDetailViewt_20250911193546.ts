@@ -1,4 +1,4 @@
-import { model } from "../model";
+import { model } from "../Model/model";
 
 function updateViewProductDetailPage() {
   const productId = model.view.productDetail.selectedId;
