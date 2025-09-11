@@ -30,19 +30,20 @@ export function generateNavbar(header: HTMLElement): HTMLElement {
     const infoCart = document.createElement('span');
     infoCart.className = 'cart-info';
     infoCart.innerText = `(${model.cart.items.length}) totalt: ${model.cart.total.toFixed(2)} NOK`;
-    nav.appendChild(infoCart);
+
+    
     li1.appendChild(a1);
     li1.appendChild(a2);
     ul.appendChild(li1);
+    ul.appendChild(infoCart);
     nav.appendChild(logo);
     nav.appendChild(ul);
     header!.appendChild(nav);
     return header!;
 }
 
-function itemsTotalCart(infoCart: HTMLElement): HTMLElement {
-    
-    infoCart.innerText = `(${model.cart.items.length}) totalt: ${model.cart.total.toFixed(2)} NOK`;
-    updateView();
+export function itemsTotalCart(): HTMLElement {
+    const infoCart = document.querySelector('.cart-info') as HTMLElement;
+    infoCart.innerText = `(${model.cart.items.reduce((acc, item) => acc + item.quantity, 0)}) totalt: ${model.cart.total.toFixed(2)} NOK`;
     return infoCart;
 }
