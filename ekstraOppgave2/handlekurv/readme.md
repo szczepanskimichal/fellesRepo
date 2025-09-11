@@ -1,1 +1,0 @@
-Michal og Charles jobber sammen
