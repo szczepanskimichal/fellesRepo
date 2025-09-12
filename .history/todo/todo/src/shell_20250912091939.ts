@@ -1,5 +1,5 @@
 import { updateView } from './pure/view';
-import { deleteTask, toggleTaskDone, addTask } from './pure/controllers';
+import { deleteTask, toggleTaskDone, addTask } from './pure/controller';
 import type { Model } from './types';
 
 function render(model: Model, action: string | null, value: number): void {

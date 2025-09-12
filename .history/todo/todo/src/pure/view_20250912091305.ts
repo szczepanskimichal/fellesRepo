@@ -1,10 +1,23 @@
+
 import type { Model } from '../types';
 
-function updateView(model: Model, handleEvent: Function): HTMLElement {
+
+
+function updateView(model: Model, handleEvent:Function) : HTMLElement {
     const mainElement = document.createElement('div');
-    console.log(model);
-    for (let index = 0; index < model.tasks.length; index++) {
+    // console.log('updateView called with model:', model); 
+      for (let index = 0; index < model.tasks.length; index++) {
         createTaskAndAppendElement(model, index, mainElement, handleEvent);
+
+
+
+
+
+
+
+
+
+
     }
 
     const newTaskInput = document.createElement('input');

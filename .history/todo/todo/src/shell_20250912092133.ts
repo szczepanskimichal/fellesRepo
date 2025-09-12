@@ -5,7 +5,7 @@ import type { Model } from './types';
 function render(model: Model, action: string | null, value: number): void {
     if (action == 'deleteTask') model = deleteTask(model, value);
     else if (action == 'toggleTaskDone') model = toggleTaskDone(model, value);
-    else if( action == 'addTask') model = addTask(model, value);
+    else if( action == 'addTask') model = addTask(model, value: string): String;
 
     const app = document.getElementById("app")!;
     const handleEvent =
