@@ -1,5 +1,6 @@
 <script setup>
 import {ref, onMounted, computed, watch} from 'vue'
+</script>
 
 const todo = ref([])
 const name = ref('')
@@ -7,12 +8,9 @@ const name = ref('')
 const input_content = ref('')
 const input_cateegory = ref(null)
 
-const todo_asc = computed(() => {
-  return [...todo.value].sort((a, b) => a.createdAt - b.createdAt)
+const todo_asc=computed(({
+  return a.createdAt - b.createdAt
 })
-</script>
-
-
 
 <template>
    <p>
