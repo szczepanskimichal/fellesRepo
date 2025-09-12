@@ -1,5 +1,5 @@
-import  { model } from "./model";
-import { updateViewProductDetailPage } from "./Views/productDetailViewt";
+import { model } from "./model";
+import { updateViewProductDetailPage } from "../src/Views/productsView";
 function updateView() {
   if (model.app.currentPage === "products") {
     updateViewProductsPage();

@@ -1,4 +1,4 @@
-import  { model } from "./model";
+import type { Model } from "./model";
 import { updateViewProductDetailPage } from "./Views/productDetailViewt";
 function updateView() {
   if (model.app.currentPage === "products") {
