@@ -17,11 +17,7 @@ const todo_asc = computed(() => {
 <template>
   <main>
    <section class="greeting">
-    <h2 class="tittle">
-      What's up, 
-      <input type="text" placeholder="name here" v-model="name" />
-    </input>
-  </h2>
+    <h2 class="tittle">What's up, <input type="text" placeholder="name here" v-model=""v-model="name"></input></h2>
    </section>
 </main>
 </template>
