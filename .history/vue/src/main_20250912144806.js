@@ -1,0 +1,10 @@
+import Vue from 'vue' 
+
+new Vue({
+    el: '#app',
+    data: {
+        name:"Michal",
+        myColor: "#ffaabb"
+    }
+    template: '<h1 style="font-family: system-ui; font-weight: 700;">Hello world!</h1>'
+})

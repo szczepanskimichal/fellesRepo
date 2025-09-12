@@ -1,1 +1,0 @@
-let myName: string = "Michał";
