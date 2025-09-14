@@ -1,0 +1,15 @@
+<template>
+  <div class="wrapper">
+    <div class="search">
+      <input type="text" placeholder="Search..."/>
+    </div>
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+// import HelloWorld from '@/components/HelloWorld.vue';
+export default {
+  name: 'SearchView',
+};
+</script>

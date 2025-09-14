@@ -29,7 +29,7 @@ export default {
     flex-direction: column;
     max-width: 250px;
   label{
-    font-family: 'Montserrat', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   input{
     height: 30px;

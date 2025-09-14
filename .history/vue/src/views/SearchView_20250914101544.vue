@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="search">
-      <label for="search">Search
-      <input id="search" type="text" name="search"/>
+      <label for="search">
+      <input id="search" type="text" placeholder="Search..." name="search"/>
     </label>
     </div>
   </div>
@@ -23,18 +23,5 @@ export default {
   margin: 0;
   padding: 30px;
   max-width: 100%;
-  }
-  .search{
-    display: flex;
-    flex-direction: column;
-    max-width: 250px;
-  label{
-    font-family: 'Montserrat', sans-serif;
-  }
-  input{
-    height: 30px;
-    border: 0; // forelopig dette fungerer ikke
-    border-bottom: 2px solid black;
-  }
   }
   </style>

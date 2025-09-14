@@ -28,9 +28,6 @@ export default {
     display: flex;
     flex-direction: column;
     max-width: 250px;
-  label{
-    font-family: 'Montserrat', sans-serif;
-  }
   input{
     height: 30px;
     border: 0; // forelopig dette fungerer ikke
