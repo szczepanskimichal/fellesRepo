@@ -23,7 +23,7 @@ export default {
     };
   },
   methods: {
-    handleInput: debounce(function () {
+    handleInput: debounce(function ()  {
       axios.get(`${API}?q=${this.searchValue}&media_type=image`).then((response) => {
         console.log(response);
       }).catch((error) => {

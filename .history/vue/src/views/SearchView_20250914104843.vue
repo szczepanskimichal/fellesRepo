@@ -10,9 +10,6 @@
 
 <script>
 // @ is an alias to /src
-import axios from 'axios';
-import debounce from 'lodash/debounce';
-
 const API = 'https://images-api.nasa.gov/search';
 
 export default {
@@ -23,13 +20,15 @@ export default {
     };
   },
   methods: {
-    handleInput: debounce(function () {
-      axios.get(`${API}?q=${this.searchValue}&media_type=image`).then((response) => {
-        console.log(response);
-      }).catch((error) => {
+    handleInput() {
+      axios.get(`${API}?q=${this.searchValue}&media_type=image`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
         console.error('There was an error!', error);
       });
-    }, 500),
+    },
   },
 };
 </script>
