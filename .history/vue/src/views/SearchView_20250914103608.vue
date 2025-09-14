@@ -19,7 +19,7 @@ export default {
     };
   },
   methods: {
-    handleInput() {
+    handleInput(event) {
       console.log(this.searchValue);
     },
   },

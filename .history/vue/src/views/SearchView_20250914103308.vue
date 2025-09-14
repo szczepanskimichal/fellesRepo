@@ -2,7 +2,8 @@
   <div class="wrapper">
     <div class="search">
       <label for="search">Search
-      <input id="search" v-model="searchValue" name="search" @input="handleInput"/>
+      <input 
+      id="search" v-model="searchValue" name="search"/>
     </label>
     </div>
   </div>
@@ -17,11 +18,6 @@ export default {
     return {
       searchValue: '',
     };
-  },
-  methods: {
-    handleInput() {
-      console.log(this.searchValue);
-    },
   },
 };
 </script>

@@ -19,10 +19,10 @@ export default {
     };
   },
   methods: {
-    handleInput() {
+    handleInput (event) {
       console.log(this.searchValue);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

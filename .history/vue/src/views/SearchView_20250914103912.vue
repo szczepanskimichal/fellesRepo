@@ -5,6 +5,11 @@
       <input id="search" v-model="searchValue" name="search" @input="handleInput"/>
     </label>
     </div>
+    <div class="results">
+      <p>Results will be displayed here</p>
+      <ul>
+        <li v-for="result in []" :key="result.id">{{ result.name }}</li>
+      </ul>
   </div>
 </template>
 
