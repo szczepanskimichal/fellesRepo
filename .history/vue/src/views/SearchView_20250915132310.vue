@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="search">
-      <p for="search">Search...</p>
+      <p class="search-label" for="search">Search...</p>
       <input id="search" v-model="searchValue" name="search" @input="handleInput"/>
     </div>
     <ul>
@@ -53,10 +53,8 @@ export default {
     flex-direction: column;
     align-items: center;
     max-width: 250px;
-  p{
+  .search-label {
     text-transform: uppercase;
-  }
-  label{
     font-family: 'Montserrat', sans-serif;
   }
     input{
@@ -64,5 +62,7 @@ export default {
     border: 0; // forelopig dette fungerer ikke
     border-bottom: 2px solid black;
   }
+  }
+  </style>
   }
   </style>

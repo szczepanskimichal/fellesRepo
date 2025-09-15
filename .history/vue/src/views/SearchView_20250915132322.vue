@@ -54,7 +54,7 @@ export default {
     align-items: center;
     max-width: 250px;
   p{
-    text-transform: uppercase;
+    font-style: to-upper-case($string: "");
   }
   label{
     font-family: 'Montserrat', sans-serif;

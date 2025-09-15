@@ -45,21 +45,22 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 30px;
   max-width: 100%;
-  } .search{
+  }
+  // .p{
+
+  // }
+  .search{
     display: flex;
     flex-direction: column;
-    align-items: center;
     max-width: 250px;
-  p{
-    text-transform: uppercase;
-  }
   label{
     font-family: 'Montserrat', sans-serif;
   }
-    input{
+  input{
     height: 10px;
     border: 0; // forelopig dette fungerer ikke
     border-bottom: 2px solid black;

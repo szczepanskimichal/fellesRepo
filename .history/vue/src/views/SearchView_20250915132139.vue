@@ -48,13 +48,14 @@ export default {
   margin: 0;
   padding: 30px;
   max-width: 100%;
-  } .search{
+  } 
+  .search{
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 250px;
   p{
-    text-transform: uppercase;
+    font-style: to-upper-case($string: "");
   }
   label{
     font-family: 'Montserrat', sans-serif;

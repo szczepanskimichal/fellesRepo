@@ -53,8 +53,8 @@ export default {
     flex-direction: column;
     align-items: center;
     max-width: 250px;
-  p{
-    text-transform: uppercase;
+  .p{
+    font-style: to-upper-case($string: "");
   }
   label{
     font-family: 'Montserrat', sans-serif;

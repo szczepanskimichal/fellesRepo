@@ -8,18 +8,10 @@
 </template>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   ;
-}
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  background-color: #f4f4f4;
-  color: #333;
 }
 </style>
