@@ -17,10 +17,12 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios';
-
+import { result } from 'lodash';
 import debounce from 'lodash/debounce';
 
+
 const API = 'https://images-api.nasa.gov/search';
+
 
 export default {
   name: 'SearchView',
@@ -31,9 +33,10 @@ export default {
     };
   },
   methods: {
+    // eslint-disable-next-line no-unused-vars
     handleInput: debounce(function () {
       axios.get(`${API}?q=${this.searchValue}&media_type=image`).then((response) => {
-        this.results = response.data.collection.items;
+        this.result = response.data.collection.items;
       }).catch((error) => {
         console.error('There was an error!', error);
       });

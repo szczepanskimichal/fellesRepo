@@ -32,8 +32,9 @@ export default {
   },
   methods: {
     handleInput: debounce(function () {
+      axios.get('https://images-api.nasa.gov/search?q=moon&media_type=image')
       axios.get(`${API}?q=${this.searchValue}&media_type=image`).then((response) => {
-        this.results = response.data.collection.items;
+        this.result = response.data.collection.items;
       }).catch((error) => {
         console.error('There was an error!', error);
       });
