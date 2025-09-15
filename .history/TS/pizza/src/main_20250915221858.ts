@@ -5,8 +5,12 @@ type Pizza = {
 type Order = {
     id: number
     pizza: Pizza
-    status: "ordered" | "completed"
+    status: string
 }
+/**
+ * Challenge: Add an Order type. It should have `id`, `pizza`, and `status` properties.
+ * Look through the code if you need a reminder as to what data types those should be.
+ */
 
 const menu = [
     { name: "Margherita", price: 8 },
@@ -30,7 +34,7 @@ function placeOrder(pizzaName: string) {
         return
     }
     cashInRegister += selectedPizza.price
-    const newOrder: Order = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
+    const newOrder = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
     orderHistory.push(newOrder)
     return newOrder
 }
@@ -55,4 +59,4 @@ completeOrder(1)
 
 console.log("Menu:", menu)
 console.log("Cash in register:", cashInRegister)
-console.log("Order history:", orderHistory)
+console.log("Order queue:", orderQueue)
