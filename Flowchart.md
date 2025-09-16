@@ -18,7 +18,7 @@ This document describes the data flow between the main modules in the project.
          +------------------------------>+                               |
          |                               |                               |
          |                               |                               |
-         |         calls render(state)    |                               |
+         |         calls render(state)    |                              |
          +-------------------------------------------------------------->+
 ```
 
@@ -44,3 +44,4 @@ This document describes the data flow between the main modules in the project.
 - `model.ts` provides the initial state to `index.html`.
 - `index.html` passes the state to `shell.ts` via the `render` function.
 - `shell.ts` uses the state to render the UI.
+Siste raden
