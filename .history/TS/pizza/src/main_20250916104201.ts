@@ -42,10 +42,10 @@ function addToArray<T>(array: T[], item: T): T[] {
 
 
 addToArray<Pizza>(menu, {id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
-addToArray<Order>(orderHistory, { id: nextOrderId++, pizza: menu[2], status: "completed" })
+addToArray<Order>(orderQueue, { id: nextOrderId++, pizza: menu[2], status: "completed" })
 
 console.log(menu)
-console.log(orderHistory)
+console.log(orderQueue)
 
 
 function completeOrder(orderId: number): Order | undefined {

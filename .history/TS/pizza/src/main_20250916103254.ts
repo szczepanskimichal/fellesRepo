@@ -3,7 +3,6 @@ type Pizza = {
     name: string
     price: number
 }
-
 type Order = {
     id: number
     pizza: Pizza
@@ -24,9 +23,11 @@ const menu: Pizza[] = [
 const orderHistory: Order[] = []
 
 function addNewPizza(pizzaObj: Pizza): Pizza {
+    pizzaObj.id = nextPizzaId++
     menu.push(pizzaObj)
-    return pizzaObj
 }
+
+
 
 function placeOrder(pizza: Pizza): Order | undefined {
     const newOrder: Order = { id: nextOrderId++, pizza: pizza, status: "ordered" }
@@ -35,39 +36,45 @@ function placeOrder(pizza: Pizza): Order | undefined {
     return newOrder
 }
 
-function addToArray<T>(array: T[], item: T): T[] {
-    array.push(item)
+function addToArray<T>(array: T[], element: T): T[] {
+    array.push(element)
     return array
 }
 
+addNewPizza({id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({id: nextPizzaId++, name: "BBQ Chicken", price: 12 })
+addNewPizza({id: nextPizzaId++, name: "Spicy Sausage", price: 11 })
 
-addToArray<Pizza>(menu, {id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
-addToArray<Order>(orderHistory, { id: nextOrderId++, pizza: menu[2], status: "completed" })
-
-console.log(menu)
-console.log(orderHistory)
-
-
-function completeOrder(orderId: number): Order | undefined {
+function completeOrder(orderId: number): Order | void {
     const order = orderHistory.find(order => order.id === orderId)
     if (!order) {
-        console.error(`${orderId} was not found in the orderHistory`)
+        console.error(`Order with ID ${orderId} not found`)
         return
     }
     order.status = "completed"
     return order
 }
 
-export function getPizzaDetail(identifier: string | number): Pizza | undefined {
+function getOrderDetails(identifier: string | number): Order | Pizza | undefined {
     if (typeof identifier === "string") {
-        return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
+        return menu.find(pizza => pizza.name === identifier)
     } else if (typeof identifier === "number") {
         return menu.find(pizza => pizza.id === identifier)
     } else {
-        throw new TypeError("Parameter `identifier` must be either a string or a number")
+        throw new Error("Indentifier must be a string or number!!!")
     }
 }
 
-// addNewPizza({ id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
-// addNewPizza({ id: nextPizzaId++, name: "BBQ Chicken", price: 12 })
-// addNewPizza({ id: nextPizzaId++, name: "Spicy Sausage", price: 11 })
+// function getPizzaDetails(pizzaId: number) {
+//     return menu.find(pizzaObj => pizzaObj.id === pizzaId)
+// }
+
+
+placeOrder("Chicken Bacon Ranch")
+completeOrder(1)
+
+console.log("Menu:", menu)
+console.log("Cash in register:", cashInRegister)
+console.log("Order history:", orderHistory)
+console.log("Get pizza by name:", getOrderDetails("Hawaiian"))
+console.log("Get pizza by ID:", getOrderDetails(5))

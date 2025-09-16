@@ -21,7 +21,7 @@ const menu: Pizza[] = [
     { id: nextPizzaId++, name: "Veggie", price: 9 },
 ]
 
-const orderHistory: Order[] = []
+const orderQueue: Order[] = []
 
 function addNewPizza(pizzaObj: Pizza): Pizza {
     menu.push(pizzaObj)
@@ -30,7 +30,7 @@ function addNewPizza(pizzaObj: Pizza): Pizza {
 
 function placeOrder(pizza: Pizza): Order | undefined {
     const newOrder: Order = { id: nextOrderId++, pizza: pizza, status: "ordered" }
-    orderHistory.push(newOrder)
+    orderQueue.push(newOrder)
     cashInRegister += pizza.price
     return newOrder
 }
@@ -42,16 +42,16 @@ function addToArray<T>(array: T[], item: T): T[] {
 
 
 addToArray<Pizza>(menu, {id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
-addToArray<Order>(orderHistory, { id: nextOrderId++, pizza: menu[2], status: "completed" })
+addToArray<Order>(orderQueue, { id: nextOrderId++, pizza: menu[2], status: "completed" })
 
 console.log(menu)
-console.log(orderHistory)
+console.log(orderQueue)
 
 
 function completeOrder(orderId: number): Order | undefined {
-    const order = orderHistory.find(order => order.id === orderId)
+    const order = orderQueue.find(order => order.id === orderId)
     if (!order) {
-        console.error(`${orderId} was not found in the orderHistory`)
+        console.error(`${orderId} was not found in the orderQueue`)
         return
     }
     order.status = "completed"
