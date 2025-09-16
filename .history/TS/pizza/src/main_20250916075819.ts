@@ -62,9 +62,9 @@ function getOrderDetails(identifier: string | number): Order | Pizza | undefined
 //     return menu.find(pizzaObj => pizzaObj.id === pizzaId)
 // }
 
-addNewPizza({ id: nextPizzaId, name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ id: nextPizzaId, name: "BBQ Chicken", price: 12 })
-addNewPizza({ id: nextPizzaId, name: "Spicy Sausage", price: 11 })
+addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
+addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)

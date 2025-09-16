@@ -9,24 +9,22 @@ type Order = {
     status: "ordered" | "completed"
 }
 
-let cashInRegister = 100
-let nextOrderId = 1
-let nextPizzaId = 1
-
 const menu: Pizza[] = [
-    { id: nextPizzaId++, name: "Margherita", price: 8 },
-    { id: nextPizzaId++, name: "Pepperoni", price: 10 },
-    { id: nextPizzaId++, name: "Hawaiian", price: 10 },
-    { id: nextPizzaId++, name: "Veggie", price: 9 },
+    { id: 1, name: "Margherita", price: 8 },
+    { id: 2, name: "Pepperoni", price: 10 },
+    { id: 3, name: "Hawaiian", price: 10 },
+    { id: 4, name: "Veggie", price: 9 },
 ]
 
+let cashInRegister = 100
+let nextOrderId = 1
 const orderHistory: Order[] = []
 
 function addNewPizza(pizzaObj: Pizza): void {
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName: string): Order | void {
+function placeOrder(pizzaName: string) {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if (!selectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`)
@@ -38,7 +36,7 @@ function placeOrder(pizzaName: string): Order | void {
     return newOrder
 }
 
-function completeOrder(orderId: number): Order | void {
+function completeOrder(orderId: number) {
     const order = orderHistory.find(order => order.id === orderId)
     if (!order) {
         console.error(`Order with ID ${orderId} not found`)
@@ -48,7 +46,7 @@ function completeOrder(orderId: number): Order | void {
     return order
 }
 
-function getOrderDetails(identifier: string | number): Order | Pizza | undefined {
+function getOrderDetails(identifier: string | number) {
     if (typeof identifier === "string") {
         return menu.find(pizza => pizza.name === identifier)
     } else if (typeof identifier === "number") {
@@ -62,9 +60,9 @@ function getOrderDetails(identifier: string | number): Order | Pizza | undefined
 //     return menu.find(pizzaObj => pizzaObj.id === pizzaId)
 // }
 
-addNewPizza({ id: nextPizzaId, name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ id: nextPizzaId, name: "BBQ Chicken", price: 12 })
-addNewPizza({ id: nextPizzaId, name: "Spicy Sausage", price: 11 })
+addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
+addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
@@ -72,5 +70,3 @@ completeOrder(1)
 console.log("Menu:", menu)
 console.log("Cash in register:", cashInRegister)
 console.log("Order history:", orderHistory)
-console.log("Get pizza by name:", getOrderDetails("Hawaiian"))
-console.log("Get pizza by ID:", getOrderDetails(5))

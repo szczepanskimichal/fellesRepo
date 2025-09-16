@@ -9,10 +9,6 @@ type Order = {
     status: "ordered" | "completed"
 }
 
-let cashInRegister = 100
-let nextOrderId = 1
-let nextPizzaId = 1
-
 const menu: Pizza[] = [
     { id: nextPizzaId++, name: "Margherita", price: 8 },
     { id: nextPizzaId++, name: "Pepperoni", price: 10 },
@@ -20,6 +16,9 @@ const menu: Pizza[] = [
     { id: nextPizzaId++, name: "Veggie", price: 9 },
 ]
 
+let cashInRegister = 100
+let nextOrderId = 1
+let nextPizzaId = 1
 const orderHistory: Order[] = []
 
 function addNewPizza(pizzaObj: Pizza): void {
@@ -62,9 +61,9 @@ function getOrderDetails(identifier: string | number): Order | Pizza | undefined
 //     return menu.find(pizzaObj => pizzaObj.id === pizzaId)
 // }
 
-addNewPizza({ id: nextPizzaId, name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ id: nextPizzaId, name: "BBQ Chicken", price: 12 })
-addNewPizza({ id: nextPizzaId, name: "Spicy Sausage", price: 11 })
+addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
+addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
