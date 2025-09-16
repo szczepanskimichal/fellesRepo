@@ -10,7 +10,7 @@ const oldState = {
   };
 if (oldState.app.currentPage === 'products') {
     const app = document.getElementById('app');
-    app!.innerHTML = 'hello world :)';
+    app!.innerHTML = 'Hello world :)';
 }
 }
 
