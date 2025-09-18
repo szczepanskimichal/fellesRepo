@@ -1,5 +1,6 @@
 import type { Model } from "./types";
 import { productView } from "./productsView";
+import { navBar } from "./commonView";
  
 
 export function render(state: Model, action: string | null): void {
@@ -11,7 +12,8 @@ export function render(state: Model, action: string | null): void {
         ...state,
       };
         if (oldState.app.currentPage === 'products') {
-          productView();
+          productView(oldState);
+          navBar(state);
       } else if (oldState.app.currentPage === 'cart') {
         const app = document.getElementById('app');
           app!.innerHTML = 'Hello world :)';

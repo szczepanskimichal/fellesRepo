@@ -1,6 +1,7 @@
 import {mainView} from './commonView';
+import type { Model } from './types';
 
-function productView() {
+function productView(model: Model): HTMLElement {
     mainView();
     const main = document.getElementById('main');
     main!.innerHTML= /*HTML*/`
