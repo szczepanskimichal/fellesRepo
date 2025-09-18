@@ -14,11 +14,11 @@ This document describes the data flow between the main modules in the project.
 +-------------------+           +-------------------+           +-------------------+
          |                               ^                               |
          |                               |                               |
-         |         imports initialState   |                               |
+         |         imports initialState  |                               |
          +------------------------------>+                               |
          |                               |                               |
          |                               |                               |
-         |         calls render(state)    |                              |
+         |         calls render(state)   |                               |
          +-------------------------------------------------------------->+
 ```
 
