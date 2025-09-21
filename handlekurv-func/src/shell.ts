@@ -1,5 +1,5 @@
 import type { Model } from "./types";
-import { productView } from "./productsView";
+import { productsView } from "./productsView";
 import { navBar, footer } from "./commonView";
 import { mainView } from "./commonView";
  
@@ -10,7 +10,8 @@ export function render(state: Model, action: string | null): void {
         ...state,
       };
         if (oldState.app.currentPage === 'products') {
-          productView(oldState);
+          // productView(oldState);
+          productsView(oldState);
           navBar(state);
           footer();
       } else if (oldState.app.currentPage === 'cart') {
