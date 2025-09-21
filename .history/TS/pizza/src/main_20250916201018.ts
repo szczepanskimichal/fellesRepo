@@ -40,6 +40,7 @@ function addToArray<T>(array: T[], item: T): T[] {
     return array
 }
 
+
 addToArray<Pizza>(menu, {id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
 addToArray<Order>(orderHistory, { id: nextOrderId++, pizza: menu[2], status: "completed" })
 

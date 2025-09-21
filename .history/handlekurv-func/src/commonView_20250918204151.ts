@@ -1,6 +1,6 @@
 import type { Model } from "./types";
 
-function mainView(model: Model): HTMLElement {
+function mainView(): HTMLElement {
     const app = document.getElementById('app');
 
         // gamle version- overgang
@@ -57,14 +57,4 @@ function navBar(model: Model): HTMLElement {
     return header!;
 }
 
-function footer (): HTMLElement {
-    const footer = document.getElementById('footer');
-    footer!.innerHTML = `
-      <p>&copy; 2025 My E-commerce Site</p>
-      <author>Michał Szczepański</author>
-    `;
-    return footer!;
-
-}
-
-export { mainView, navBar, footer };
+export {mainView, navBar};
