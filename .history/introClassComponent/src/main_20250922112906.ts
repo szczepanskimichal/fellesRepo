@@ -1,0 +1,37 @@
+function CircledText(text: string, backColor: string, textColor: string) : HTMLElement{
+    const div = document.createElement("div");
+    const fontSize = Math.min(300, 300/text.length);
+    div.innerHTML = /*HTML*/`
+        <div 
+            class="circled-text"
+            style="background-color:${backColor}; color:${textColor}; font-size:${fontSize}px"
+            >
+            ${text}
+        </div>        
+    `;
+    return div;
+}
+
+function Rectangel(text: string, backColor: string,textColor: string) :HTMLElement{
+  const p = document.createElement("p");
+  p.innerHTML = /*HTML*/ `
+  <p>
+  <style="background-color:${backColor}; color:${textColor};
+            />
+            ${text}
+        </p>        
+  `
+}
+
+render();
+
+function render() {
+  
+  const app = document.getElementById("app")!;
+  const circledText1 = CircledText("Hei", "blue", "white");
+  const circledText2 = CircledText("Verden", "green", "black");
+  const rectangel1= Rectangel("hallo","pink","red");
+  app.appendChild(circledText1);
+  app.appendChild(circledText2);
+  app.appendChild(rectangel1);
+}
