@@ -27,7 +27,7 @@ function productsView(model: Model): HTMLElement {
         const button = document.createElement('button');
         button.className = 'btn btn-success';
         button.innerText = 'Legg i handlekurv';
-        button.addEventListener('click', () => addToCart(product.id));
+        button.addEventListener('click', () => addToCart?(product.id));
         footer.appendChild(button);
         productCard.appendChild(image);
         productCard.appendChild(productInfo);

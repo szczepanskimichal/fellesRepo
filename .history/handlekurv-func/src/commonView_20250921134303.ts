@@ -4,6 +4,11 @@ import { render } from "./shell";
 function mainView(model: Model): HTMLElement {
     const app = document.getElementById('app');
 
+        // gamle version- overgang
+        // document.createElement('header');
+        // document.createElement('main');
+        // document.createElement('footer');
+
         const header = document.createElement('header') as HTMLElement;
         const main = document.createElement('main') as HTMLElement;
         const footer = document.createElement('footer') as HTMLElement;
@@ -32,11 +37,11 @@ function navBar(model: Model): HTMLElement {
     const a1 = document.createElement('a');
     a1.href = '#';
     a1.innerText = 'Produkter';
-    a1.addEventListener('click', () => { model.app.currentPage = 'products'; render(model,null); });
+    a1.addEventListener('click', () => { model.app.currentPage = 'products'; });
     const a2 = document.createElement('a');
     a2.href = '#';
     a2.innerText = 'Handlekurv 🛒';
-    a2.addEventListener('click', () => { model.app.currentPage = 'cart'; render(model,null); });
+    a2.addEventListener('click', () => { model.app.currentPage = 'cart';  });
 
     const infoCart = document.createElement('span');
     infoCart.className = 'cart-info';
@@ -55,7 +60,7 @@ function navBar(model: Model): HTMLElement {
 
 function footer (): HTMLElement {
     const footer = document.getElementById('footer');
-    footer!.innerHTML =/*HTML*/ `
+    footer!.innerHTML = `
       <p>&copy; 2025 My E-commerce Site</p>
       <author>Michał Szczepański</author>
     `;

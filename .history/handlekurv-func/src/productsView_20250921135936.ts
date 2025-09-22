@@ -1,6 +1,5 @@
 import {mainView} from './commonView';
 import type { Model } from './types';
-import { addToCart } from './controller';
 
 function productsView(model: Model): HTMLElement {
     mainView();

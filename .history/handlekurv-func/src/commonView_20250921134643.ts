@@ -55,7 +55,7 @@ function navBar(model: Model): HTMLElement {
 
 function footer (): HTMLElement {
     const footer = document.getElementById('footer');
-    footer!.innerHTML =/*HTML*/ `
+    footer!.innerHTML = `
       <p>&copy; 2025 My E-commerce Site</p>
       <author>Michał Szczepański</author>
     `;

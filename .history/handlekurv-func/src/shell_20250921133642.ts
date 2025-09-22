@@ -5,9 +5,6 @@ import { mainView } from "./commonView";
  
 
 export function render(state: Model, action: string | null): void {
-  const app = document.getElementById('app');
-  app!.innerHTML='';
-  console.log("rendering app ...", state)
   
   const oldState = {
         ...state,
@@ -18,8 +15,6 @@ export function render(state: Model, action: string | null): void {
           navBar(state);
           footer();
       } else if (oldState.app.currentPage === 'cart') {
-        navBar(state);
-        footer();
         const app = document.getElementById('app');
           app!.innerHTML = 'Hello world :)';
       }

@@ -5,9 +5,6 @@ import { mainView } from "./commonView";
  
 
 export function render(state: Model, action: string | null): void {
-  const app = document.getElementById('app');
-  app!.innerHTML='';
-  console.log("rendering app ...", state)
   
   const oldState = {
         ...state,

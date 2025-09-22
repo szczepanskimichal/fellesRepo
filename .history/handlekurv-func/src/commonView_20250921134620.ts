@@ -32,7 +32,7 @@ function navBar(model: Model): HTMLElement {
     const a1 = document.createElement('a');
     a1.href = '#';
     a1.innerText = 'Produkter';
-    a1.addEventListener('click', () => { model.app.currentPage = 'products'; render(model,null); });
+    a1.addEventListener('click', () => { model.app.currentPage = 'products'; });
     const a2 = document.createElement('a');
     a2.href = '#';
     a2.innerText = 'Handlekurv 🛒';
@@ -55,7 +55,7 @@ function navBar(model: Model): HTMLElement {
 
 function footer (): HTMLElement {
     const footer = document.getElementById('footer');
-    footer!.innerHTML =/*HTML*/ `
+    footer!.innerHTML = `
       <p>&copy; 2025 My E-commerce Site</p>
       <author>Michał Szczepański</author>
     `;
