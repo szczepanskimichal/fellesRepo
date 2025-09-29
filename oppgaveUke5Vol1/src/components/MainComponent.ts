@@ -1,23 +1,18 @@
 import { BaseComponent } from "./BaseComponent";
 import type { AppState } from "../types";
-import { Location } from "./Location";
 
 export class MainComponent extends BaseComponent {
 
-    propNames: string[] = ['state'];
-
-
-    
+    static propNames: string[] = ['state'];
 
     render() {
-        // const state: AppState = this.getProp('state');
-        const location = new Location();
-
+        const state: AppState = this.get('state') || { currentId: null, filesAndFolders: [] };
+        
         this.shadowRoot!.innerHTML = `
             <fieldset>
             
             <legend>Filer & mapper</legend>
-            ${location.connectedCallback()}
+            <my-location>location here!</my-location>
           
             
             
@@ -25,15 +20,12 @@ export class MainComponent extends BaseComponent {
         <div>
         <p>Mapper og filer</p>
             <ul>
-            <li>
-                <h2>Emne1</h2>
-            </li>
-            <li>
-                <h2>Emne2</h2>
-            </li>
-            <li>
-                <h2>Emne4</h2>
-            </li>
+            ${state.filesAndFolders.map(item => `
+                <li>
+                    <h2>${item.name}</h2>
+                    ${item.parentId ? `<small>(w folderze ${item.parentId})</small>` : ''}
+                </li>
+            `).join('')}
             </ul>
         </div>
 

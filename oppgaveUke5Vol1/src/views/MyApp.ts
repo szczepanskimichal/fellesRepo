@@ -1,6 +1,5 @@
 import { BaseComponent } from "../components/BaseComponent";
 import type { AppState } from "../types";
-import {MainComponent} from "../components/MainComponent";
 
 export class MyApp extends BaseComponent {
     static propNames: string[] = [];
@@ -20,7 +19,7 @@ export class MyApp extends BaseComponent {
         console.log(this.state);
         this.shadowRoot!.innerHTML = `
         <div>
-            <main-component state=${(this.state)}></main-component>
+            <main-component state='${JSON.stringify(this.state)}'></main-component>
         </div>
 
         `;
