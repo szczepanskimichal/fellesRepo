@@ -1,6 +1,7 @@
 type AppState = {
     currentId: null | number;
-    filesAndFolders: {id: number ,
+    filesAndFolders: {
+        id: number ,
         name: string,
         parentId?: null | number,
         content?: null | string

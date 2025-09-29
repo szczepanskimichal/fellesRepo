@@ -1,5 +1,6 @@
 import { BaseComponent } from "../components/BaseComponent";
 import type { AppState } from "../types";
+import {MainComponent} from "../components/MainComponent";
 
 export class MyApp extends BaseComponent {
     static propNames: string[] = [];
@@ -16,21 +17,13 @@ export class MyApp extends BaseComponent {
         ]
     }
     render() {
+        console.log(this.state);
         this.shadowRoot!.innerHTML = `
-            <fieldset>
-            <legend>Filer & mapper</legend>
-            <p>Du er her ${this.state.currentId}</p>
-            <ol>
-                ${this.state.filesAndFolders.map(item => `
-                    <li>
-                        ${item.name} ${item.parentId ? `(i mappe ${item.parentId})` : ''}
-                    </li>
-                `).join('')}
-            </ol>
-            //vise komponent here!!!
-            </fieldset>
+        <div>
+            <main-component state=${(this.state)}></main-component>
+        </div>
 
-            
         `;
+
     }
 }
