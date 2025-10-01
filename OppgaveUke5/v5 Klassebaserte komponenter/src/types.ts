@@ -1,5 +1,6 @@
 export interface AppState{
     currentId?: number;
+    selectedForDeletion?: number;
     filesAndFolders: FileOrFolder[];
 }
 
