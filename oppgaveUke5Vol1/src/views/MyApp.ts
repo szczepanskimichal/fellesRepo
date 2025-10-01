@@ -14,6 +14,7 @@ export class MyApp extends BaseComponent {
             {id: 4, name: 'Tirsdag 15.', parentId: 3, content: 'melk\nbrød\nost\n'},
             {id: 5, name: 'Bad', parentId: 1, content: 'Lekkasje, bla bla'},
             {id: 6, name: 'notater.txt', content: 'abc'},
+            {id: 7, name: 'Huskeliste', parentId: 2},
         ]
     }
     render() {
@@ -22,7 +23,8 @@ export class MyApp extends BaseComponent {
         `;
 
         const filesAndFolders = this.shadowRoot!.querySelector('files-and-folders') as FilesAndFolders;
-        filesAndFolders.set('items', this.state.filesAndFolders);
-
+        const currentFilesAndFolders = this.state.filesAndFolders.filter(f => f.parentId == this.state.currentId);
+        filesAndFolders.set('items', currentFilesAndFolders);
+               
     }
 }
