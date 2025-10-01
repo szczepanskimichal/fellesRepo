@@ -4,10 +4,10 @@ export class BaseComponent extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
-    static propNames: string[];
+    static props: string[];
 
     static get observedAttributes() {
-        return this.propNames;
+        return this.props;
     }
 
     get(name: string): any {

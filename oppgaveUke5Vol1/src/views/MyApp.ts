@@ -1,10 +1,11 @@
 import { BaseComponent } from "../components/BaseComponent";
 import type { AppState } from "../types";
+import type { FilesAndFolders } from "../components/FilesAndFolders";
 
 export class MyApp extends BaseComponent {
-    static propNames: string[] = [];
+    static props: string[] = [];
 
-    state: AppState = {
+    private state: AppState = {
         currentId: null,
         filesAndFolders: [
             {id: 1, name: 'Ting som skal fikses'},
@@ -16,13 +17,12 @@ export class MyApp extends BaseComponent {
         ]
     }
     render() {
-        console.log(this.state);
         this.shadowRoot!.innerHTML = `
-        <div>
-            <main-component state='${JSON.stringify(this.state)}'></main-component>
-        </div>
-
+        <files-and-folders></files-and-folders>
         `;
+
+        const filesAndFolders = this.shadowRoot!.querySelector('files-and-folders') as FilesAndFolders;
+        filesAndFolders.set('items', this.state.filesAndFolders);
 
     }
 }
