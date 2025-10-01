@@ -29,8 +29,8 @@ export class MainComponent extends BaseComponent {
         </div>
 
          <div>
-<my-input></my-input>
-</div>
+            <my-input></my-input>
+        </div>
         
             </fieldset>`
         }

@@ -1,10 +1,13 @@
-type AppState = {
+interface AppState  {
     currentId: null | number;
-    filesAndFolders: {
-        id: number ,
-        name: string,
-        parentId?: null | number,
-        content?: null | string
-    }[],
-};
-export type { AppState };
+    filesAndFolders: FileOrFolder[],
+    }
+
+interface FileOrFolder {
+    id: number;
+    name: string;
+    parentId?: null | number;
+    content?: null | string;
+}
+
+export type { AppState, FileOrFolder };
