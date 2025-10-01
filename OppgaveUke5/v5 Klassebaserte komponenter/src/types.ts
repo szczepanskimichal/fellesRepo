@@ -1,6 +1,5 @@
 export interface AppState{
     currentId?: number;
-    selectedForDeletion?: number;
     filesAndFolders: FileOrFolder[];
 }
 
@@ -9,4 +8,9 @@ export interface FileOrFolder{
     name: string;
     content?: string;
     parentId?: number;
+}
+
+export interface DeleteEvent {
+    id: number;
+    type?: 'file' | 'folder';
 }
