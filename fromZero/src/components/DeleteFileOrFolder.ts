@@ -4,6 +4,13 @@ export class DeleteFileOrFolder extends BaseComponent {
     private state = {
         isInInitialPhase: true,
     };
+
+    // Reset do fazy początkowej przy każdym renderowaniu
+    connectedCallback() {
+        super.connectedCallback();
+        this.state.isInInitialPhase = true;
+    }
+
     render() {
        const isInInitialPhase = this.state.isInInitialPhase;
         this.shadowRoot!.innerHTML = /*HTML*/`
@@ -37,6 +44,10 @@ export class DeleteFileOrFolder extends BaseComponent {
     handleChangePhase(isInInitialPhase: boolean) {
         console.log("something", isInInitialPhase);
         this.state.isInInitialPhase = isInInitialPhase;
-        this.render();
-}
+        if (isInInitialPhase) {
+            const event = new CustomEvent('cancel-delete');
+            this.dispatchEvent(event);
+        }
+        this.scheduleRender();
+    }
 }

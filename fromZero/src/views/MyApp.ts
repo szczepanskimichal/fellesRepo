@@ -1,4 +1,3 @@
-
 import type { FilesAndFolders } from "../components/FilesAndFolders";
 import type { AppState, FileOrFolder } from "../types";
 import { BaseComponent } from "../components/BaseComponent";
@@ -40,21 +39,27 @@ export class MyApp extends BaseComponent {
         filesAndFolders.addEventListener('marked-file-or-folder-changed', this.handleMarkedFileOrFolderChanged.bind(this));
 // <----------------------------------------------------------------------------------------------------------------------->
         const addFileOrFolder = this.shadowRoot!.querySelector('add-file-or-folder');
-addFileOrFolder?.addEventListener('content-added', this.handleContentAdded.bind(this));
+        addFileOrFolder?.addEventListener('content-added', this.handleContentAdded.bind(this));
 
         const deleteFileOrFolder = this.shadowRoot!.querySelector('delete-file-or-folder');
         if (deleteFileOrFolder) {
             deleteFileOrFolder.addEventListener('delete-file-or-folder', this.handleDelete.bind(this));
+            deleteFileOrFolder.addEventListener('cancel-delete', this.handleCancelDelete.bind(this));
         }
     }
 
     handleDelete() {
         this.state.filesAndFolders = this.state.filesAndFolders.filter(
             f => !this.state.markedFilesAndFolders.has(f.id));
-            this.state.markedFilesAndFolders.clear;
+            this.state.markedFilesAndFolders.clear();
         //  if (this.state.filesAndFolders.find(f => f.id == this.state.currentId) === undefined) {
         //     delete this.state.currentId;
         //  }
+        this.scheduleRender();
+    }
+
+    handleCancelDelete() {
+        this.state.markedFilesAndFolders.clear();
         this.scheduleRender();
     }
     
