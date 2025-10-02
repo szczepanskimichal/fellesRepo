@@ -5,6 +5,7 @@ export class BaseComponent extends HTMLElement {
     }
 
     static props: string[];
+    private isRenderScheduled: boolean = false;
 
     static get observedAttributes() {
         return this.props;
@@ -33,11 +34,22 @@ export class BaseComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        this.render();
+        this.scheduleRender();
     }
 
     attributeChangedCallback() {
-        this.render();
+        this.scheduleRender();
+    }
+
+    scheduleRender() {
+        if (!this.isRenderScheduled) {
+            this.isRenderScheduled = true;
+            requestAnimationFrame(() => {
+                this.isRenderScheduled = false;
+                this.render();
+            });
+            return null;
+        }
     }
 
     render() {

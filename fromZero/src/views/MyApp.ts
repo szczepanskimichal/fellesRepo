@@ -14,17 +14,20 @@ export class MyApp extends BaseComponent {
             { id: 5, name: 'Bad', parentId: 2, content: 'Lekkasje, bla bla' },
             { id: 6, name: 'notater.txt', content: 'abc' },
         ],
-    };;
+        markedFilesAndFolders: new Set<number>(),
+    };
 
     render() {
         // console.log(this.state.currentId);
         this.shadowRoot!.innerHTML = /*HTML*/`
         <files-and-folders></files-and-folders>
         <add-file-or-folder></add-file-or-folder>
+        ${this.state.markedFilesAndFolders.size > 0 ? '<delete-file-or-folder></delete-file-or-folder>' : ''}
         `;
         const filesAndFolders = this.shadowRoot!.querySelector('files-and-folders') as FilesAndFolders;
         const currentFilesAndFolders = this.state.filesAndFolders.filter(f => f.parentId === this.state.currentId);
         filesAndFolders.set('items', currentFilesAndFolders);
+        filesAndFolders.set('marked-files-and-folders', Array.from(this.state.markedFilesAndFolders));
         // filesAndFolders.set('currentId', this.state.currentId);
 // <----------------------------------------------------------------------------------------------------------------------->
         const currentFileOrFolder = this.state.filesAndFolders.find(f => f.id == this.state.currentId);
@@ -34,11 +37,23 @@ export class MyApp extends BaseComponent {
         }
 
         filesAndFolders.addEventListener('selected', this.handleSelected.bind(this));
+        filesAndFolders.addEventListener('marked-file-or-folder-changed', this.handleMarkedFileOrFolderChanged.bind(this));
 // <----------------------------------------------------------------------------------------------------------------------->
         const addFileOrFolder = this.shadowRoot!.querySelector('add-file-or-folder');
-        addFileOrFolder?.addEventListener('content-added', this.handleContentAdded.bind(this));
+addFileOrFolder?.addEventListener('content-added', this.handleContentAdded.bind(this));
 
+        const deleteFileOrFolder = this.shadowRoot!.querySelector('delete-file-or-folder');
+        if (deleteFileOrFolder) {
+            deleteFileOrFolder.addEventListener('delete-file-or-folder', this.handleDelete.bind(this));
+        }
     }
+
+    handleDelete() {
+        this.state.filesAndFolders = this.state.filesAndFolders.filter(
+            f => !this.state.markedFilesAndFolders.has(f.id));
+        this.scheduleRender();
+    }
+    
 
     handleContentAdded(e: Event) {
         const customEvent = e as CustomEvent;
@@ -55,16 +70,25 @@ export class MyApp extends BaseComponent {
         if (customEvent.detail.isFile) newContent.content = '';
         this.state.filesAndFolders.push(newContent);
         console.log(this.state);
-        this.render();
+        this.scheduleRender();
     }
 
     handleSelected(e: Event) {
         const customEvent = e as CustomEvent;
-        if(customEvent.detail == '-1'){
+        const selectedFileOrFolder = this.state.filesAndFolders.find(f => f.id == parseInt(customEvent.detail));
+        if (selectedFileOrFolder === undefined) {
             delete this.state.currentId;
         } else {
-            this.state.currentId = parseInt(customEvent.detail);
+            this.state.currentId = selectedFileOrFolder.id;
         }
-        this.render();
+        this.scheduleRender();
+    }
+    
+    handleMarkedFileOrFolderChanged(e: Event) {
+        const customEvent = e as CustomEvent;
+        const { id, isChecked } = customEvent.detail;
+        if (isChecked) this.state.markedFilesAndFolders.add(id);
+        else this.state.markedFilesAndFolders.delete(id);
+        this.scheduleRender();
     }
 }
