@@ -20,6 +20,7 @@ export class MyApp extends BaseComponent {
         // console.log(this.state.currentId);
         this.shadowRoot!.innerHTML = /*HTML*/`
         <files-and-folders></files-and-folders>
+        <add-file-or-folder></add-file-or-folder>
         `;
         const filesAndFolders = this.shadowRoot!.querySelector('files-and-folders') as FilesAndFolders;
         const currentFilesAndFolders = this.state.filesAndFolders.filter(f => f.parentId === this.state.currentId);
