@@ -1,6 +1,6 @@
 
 import type { FilesAndFolders } from "../components/FilesAndFolders";
-import type { AppState } from "../types";
+import type { AppState, FileOrFolder } from "../types";
 import { BaseComponent } from "../components/BaseComponent";
 
 
@@ -34,10 +34,33 @@ export class MyApp extends BaseComponent {
         }
 
         filesAndFolders.addEventListener('selected', this.handleSelected.bind(this));
+// <----------------------------------------------------------------------------------------------------------------------->
+        const addFileOrFolder = this.shadowRoot!.querySelector('add-file-or-folder');
+        addFileOrFolder?.addEventListener('content-added', this.handleContentAdded.bind(this));
+
     }
+
+    handleContentAdded(e: Event) {
+        const customEvent = e as CustomEvent;
+        const newContent : FileOrFolder ={
+            id: Math.max(...this.state.filesAndFolders.map(f => f.id)) + 1,
+            name: customEvent.detail.name,
+            
+            // parentId: this.state.currentId,
+        }
+        const current = this.state.filesAndFolders.find(f => f.id == this.state.currentId)!;
+        if (current) {
+            newContent.parentId = current.hasOwnProperty('content') ? current?.parentId : current.id;
+        }
+        if (customEvent.detail.isFile) newContent.content = '';
+        this.state.filesAndFolders.push(newContent);
+        console.log(this.state);
+        this.render();
+    }
+
     handleSelected(e: Event) {
         const customEvent = e as CustomEvent;
-        if(customEvent.detail === '-1'){
+        if(customEvent.detail == '-1'){
             delete this.state.currentId;
         } else {
             this.state.currentId = parseInt(customEvent.detail);

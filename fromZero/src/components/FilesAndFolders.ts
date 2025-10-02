@@ -13,10 +13,10 @@ export class FilesAndFolders extends BaseComponent {
                 ${parentFolder ? /*HTML*/`
                      📁 <a href="" data-id="${parentFolder}">...</a>
                     ` : ''}
-                ${filesAndFolders.filter(f => !f.content).map(f =>/*HTML*/`
+                ${filesAndFolders.filter(f => !f.hasOwnProperty('content')).map(f =>/*HTML*/`
                     📁 <a href="" data-id="${f.id}">${f.name}</a><br/>
                 `).join('')}
-                ${filesAndFolders.filter(f => f.content).map(f =>/*HTML*/`
+                ${filesAndFolders.filter(f => f.hasOwnProperty('content')).map(f =>/*HTML*/`
                     <span>🗎</span> <a href="" data-id="${f.id}">${f.name}</a><br/>
                 `).join('')}
             </fieldset>
