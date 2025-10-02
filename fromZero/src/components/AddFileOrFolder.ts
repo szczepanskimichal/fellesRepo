@@ -4,11 +4,13 @@ import type { FileOrFolder } from "../types";
 export class AddFileOrFolder extends BaseComponent {
     private state = {
         name: '',
+        errorMessage: "",
     };
     render() {
         this.shadowRoot!.innerHTML = /*HTML*/`
             <fieldset>
                 <legend>Legg til fil eller mappe</legend>
+                <div style="color:red">${this.state.errorMessage}</div>
                 <input type="text"/>
                 <button>Ny fil</button>
                 <button>Ny mappe</button>
@@ -26,7 +28,12 @@ export class AddFileOrFolder extends BaseComponent {
             isFile: isFile,
             name: this.state.name,
         };
+        if(!detail.name || detail.name.length ==0) {
+            this.state.errorMessage = "Name is required";
+            this.render();
+        } else {
         const event = new CustomEvent('content-added', {detail});
         this.dispatchEvent(event);        
+        }
     }
 }
