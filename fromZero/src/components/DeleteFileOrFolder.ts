@@ -35,6 +35,7 @@ export class DeleteFileOrFolder extends BaseComponent {
     }
 
     handleChangePhase(isInInitialPhase: boolean) {
+        console.log("something", isInInitialPhase);
         this.state.isInInitialPhase = isInInitialPhase;
         this.render();
 }

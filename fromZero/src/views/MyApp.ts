@@ -51,6 +51,10 @@ addFileOrFolder?.addEventListener('content-added', this.handleContentAdded.bind(
     handleDelete() {
         this.state.filesAndFolders = this.state.filesAndFolders.filter(
             f => !this.state.markedFilesAndFolders.has(f.id));
+            this.state.markedFilesAndFolders.clear;
+        //  if (this.state.filesAndFolders.find(f => f.id == this.state.currentId) === undefined) {
+        //     delete this.state.currentId;
+        //  }
         this.scheduleRender();
     }
     

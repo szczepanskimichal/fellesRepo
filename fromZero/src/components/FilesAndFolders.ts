@@ -13,7 +13,7 @@ export class FilesAndFolders extends BaseComponent {
             <fieldset>
                 <legend>Mapper og filer</legend>
                 ${parentFolder ? /*HTML*/`
-                     📁 <a href="" data-id="${parentFolder}">...</a>
+                     📁 <a href="" data-id="${parentFolder}">...</a><br/>
                     ` : ''}
                 ${filesAndFolders.filter(f => !f.hasOwnProperty('content')).map(f =>/*HTML*/`
                     <input data-id="${f.id}" type="checkbox" ${markedFilesAndFolders.includes(f.id) ? 'checked' : ''}/>
@@ -21,7 +21,7 @@ export class FilesAndFolders extends BaseComponent {
                 `).join('')}
                 ${filesAndFolders.filter(f => f.hasOwnProperty('content')).map(f =>/*HTML*/`
                     <input data-id="${f.id}" type="checkbox" ${markedFilesAndFolders.includes(f.id) ? 'checked' : ''}/>
-                    <span>🗎</span> <a href="" data-id="${f.id}">${f.name}</a><br/>
+                    <a href="" data-id="${f.id}">${f.name}</a><br/>
                 `).join('')}
             </fieldset>
         `;
@@ -34,6 +34,7 @@ export class FilesAndFolders extends BaseComponent {
         const idStr = target.getAttribute('data-id');
         if (target.matches('a')) {
             e.preventDefault();
+            
             const event = new CustomEvent('selected', { detail: idStr });
             this.dispatchEvent(event);
         }
