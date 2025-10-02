@@ -5,7 +5,7 @@ export class FilesAndFolders extends BaseComponent {
     static props=['items', 'parent-folder'];
     render() {
         const filesAndFolders = this.get('items') as FileOrFolder[];
-        const parentFolder = this.get('parent-folder') as FileOrFolder || false
+        const parentFolder = this.get('parent-folder') as number|| false
         console.log('rendering files and folders', filesAndFolders);
         this.shadowRoot!.innerHTML = /*HTML*/`
             <fieldset>
@@ -21,14 +21,16 @@ export class FilesAndFolders extends BaseComponent {
                 `).join('')}
             </fieldset>
         `;
-        this.shadowRoot!.addEventListener('click', (e:Event) => {
-            e.preventDefault();
-            if(e.target!.matches('a')){
-                const aElement = e.target as HTMLAnchorElement;
-                const id = aElement.getAttribute('data-id');
-                const Event = new CustomEvent('selected', { detail:id });
-                this.dispatchEvent(Event);
-            }
-        });
+        this.shadowRoot!.addEventListener('click', this.handleClick.bind(this));
+    }
+
+    handleClick(e: Event) {
+        e.preventDefault();
+        if (e.target && (e.target as HTMLElement).matches('a')) {
+            const aElement = e.target as HTMLAnchorElement;
+            const id = aElement.getAttribute('data-id');
+            const event = new CustomEvent('selected', { detail: id });
+            this.dispatchEvent(event);
+        }
     }
 }

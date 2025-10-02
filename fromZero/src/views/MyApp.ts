@@ -1,7 +1,8 @@
 
-import { BaseComponent } from "../components/BaseComponent";
 import type { FilesAndFolders } from "../components/FilesAndFolders";
 import type { AppState } from "../types";
+import { BaseComponent } from "../components/BaseComponent";
+
 
 export class MyApp extends BaseComponent {
     private state: AppState = {
@@ -26,13 +27,20 @@ export class MyApp extends BaseComponent {
         // filesAndFolders.set('currentId', this.state.currentId);
 // <----------------------------------------------------------------------------------------------------------------------->
         const currentFileOrFolder = this.state.filesAndFolders.find(f => f.id == this.state.currentId);
-        if (currentFileOrFolder) filesAndFolders.set('parent-folder', currentFileOrFolder.parentId);
+        if (currentFileOrFolder) {
+            const folderId = currentFileOrFolder!.parentId ?? -1;
+            filesAndFolders.set('parent-folder', folderId);
+        }
 
         filesAndFolders.addEventListener('selected', this.handleSelected.bind(this));
     }
-    handleSelected(e: CustomEvent) {
+    handleSelected(e: Event) {
         const customEvent = e as CustomEvent;
-        this.state.currentId = customEvent.detail;
+        if(customEvent.detail === '-1'){
+            delete this.state.currentId;
+        } else {
+            this.state.currentId = parseInt(customEvent.detail);
+        }
         this.render();
     }
 }
