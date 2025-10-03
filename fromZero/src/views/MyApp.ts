@@ -7,15 +7,16 @@ import type { TrashBin } from "../components/TrashBin";
 export class MyApp extends BaseComponent {
     private state: AppState = {
         filesAndFolders: [
-            { id: 1, name: 'Handlelister' },
-            { id: 2, name: 'Ting som skal fikses' },
-            { id: 3, name: 'Oktober', parentId: 1 },
-            { id: 4, name: 'Tirsdag 15.', parentId: 3, content: 'melk\nbrød\nost\n' },
-            { id: 5, name: 'Bad', parentId: 2, content: 'Lekkasje, bla bla' },
-            { id: 6, name: 'notater.txt', content: 'abc' },
+            { id: 1, name: 'Handlelister', isTrash: false },
+            { id: 2, name: 'Ting som skal fikses', isTrash: false },
+            { id: 3, name: 'Oktober', parentId: 1 , isTrash: false},
+            { id: 4, name: 'Tirsdag 15.', parentId: 3, content: 'melk\nbrød\nost\n' , isTrash: false},
+            { id: 5, name: 'Bad', parentId: 2, content: 'Lekkasje, bla bla' , isTrash: false},
+            { id: 6, name: 'notater.txt', content: 'abc' , isTrash: false},
+            { id: 8, name: 'Januar', parentId: 1, content: 'test', isTrash: false},
         ],
         markedFilesAndFolders: new Set<number>(),
-        trashedItems: [],
+        trashedItems: [] = [],
     };
 
     render() {

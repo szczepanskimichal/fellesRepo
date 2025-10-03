@@ -10,4 +10,5 @@ export interface FileOrFolder{
     name: string;
     content?: string;
     parentId?: number;
+    isTrash: boolean
 }
