@@ -15,7 +15,9 @@ export class TrashBin extends BaseComponent {
         this.shadowRoot!.innerHTML = /*HTML*/`
             <div>
                 <button id="trash-icon" style="font-size: 24px; cursor: pointer; background: none; border: none;">
-                    🗑️ (${this.items.length})
+                <img src="./src/components/trash-svgrepo-com.svg" alt="Trash Icon" style="width: 24px; height: 24px; vertical-align: middle;" />
+                (${this.items.length})
+                 
                 </button>
                 ${this.isExpanded ? /*HTML*/`
                     <fieldset>
