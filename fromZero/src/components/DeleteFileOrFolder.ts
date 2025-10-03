@@ -42,7 +42,7 @@ export class DeleteFileOrFolder extends BaseComponent {
     }
 
     handleChangePhase(isInInitialPhase: boolean) {
-        console.log("something", isInInitialPhase);
+        console.log("initialPhase", isInInitialPhase);
         this.state.isInInitialPhase = isInInitialPhase;
         if (isInInitialPhase) {
             const event = new CustomEvent('cancel-delete');
@@ -51,3 +51,4 @@ export class DeleteFileOrFolder extends BaseComponent {
         this.scheduleRender();
     }
 }
+// customElements.define('delete-file-or-folder', DeleteFileOrFolder);

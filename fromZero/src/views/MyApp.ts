@@ -1,6 +1,7 @@
 import type { FilesAndFolders } from "../components/FilesAndFolders";
 import type { AppState, FileOrFolder } from "../types";
 import { BaseComponent } from "../components/BaseComponent";
+import type { TrashBin } from "../components/TrashBin";
 
 
 export class MyApp extends BaseComponent {
@@ -14,6 +15,7 @@ export class MyApp extends BaseComponent {
             { id: 6, name: 'notater.txt', content: 'abc' },
         ],
         markedFilesAndFolders: new Set<number>(),
+        trashedItems: [],
     };
 
     render() {
@@ -22,12 +24,12 @@ export class MyApp extends BaseComponent {
         <files-and-folders></files-and-folders>
         <add-file-or-folder></add-file-or-folder>
         ${this.state.markedFilesAndFolders.size > 0 ? '<delete-file-or-folder></delete-file-or-folder>' : ''}
+        <trash-bin></trash-bin>
         `;
         const filesAndFolders = this.shadowRoot!.querySelector('files-and-folders') as FilesAndFolders;
         const currentFilesAndFolders = this.state.filesAndFolders.filter(f => f.parentId === this.state.currentId);
         filesAndFolders.set('items', currentFilesAndFolders);
         filesAndFolders.set('marked-files-and-folders', Array.from(this.state.markedFilesAndFolders));
-        // filesAndFolders.set('currentId', this.state.currentId);
 // <----------------------------------------------------------------------------------------------------------------------->
         const currentFileOrFolder = this.state.filesAndFolders.find(f => f.id == this.state.currentId);
         if (currentFileOrFolder) {
@@ -46,19 +48,30 @@ export class MyApp extends BaseComponent {
             deleteFileOrFolder.addEventListener('delete-file-or-folder', this.handleDelete.bind(this));
             deleteFileOrFolder.addEventListener('cancel-delete', this.handleCancelDelete.bind(this));
         }
+
+        const trashBin = this.shadowRoot!.querySelector('trash-bin') as TrashBin;
+        if (trashBin) {
+            trashBin.set('items', this.state.trashedItems);
+            trashBin.addEventListener('restore-item', this.handleRestoreItem.bind(this));
+            trashBin.addEventListener('empty-trash', this.handleEmptyTrash.bind(this));
+        }
     }
 
     handleDelete() {
+        const itemsToTrash = this.state.filesAndFolders.filter(
+            f => this.state.markedFilesAndFolders.has(f.id)
+        );
+        
+        this.state.trashedItems.push(...itemsToTrash);
         this.state.filesAndFolders = this.state.filesAndFolders.filter(
-            f => !this.state.markedFilesAndFolders.has(f.id));
-            this.state.markedFilesAndFolders.clear();
-        //  if (this.state.filesAndFolders.find(f => f.id == this.state.currentId) === undefined) {
-        //     delete this.state.currentId;
-        //  }
+            f => !this.state.markedFilesAndFolders.has(f.id)
+        );
+        this.state.markedFilesAndFolders.clear();
         this.scheduleRender();
     }
 
     handleCancelDelete() {
+        // Anuluj usuwanie - po prostu odznacz elementy
         this.state.markedFilesAndFolders.clear();
         this.scheduleRender();
     }
@@ -79,6 +92,22 @@ export class MyApp extends BaseComponent {
         if (customEvent.detail.isFile) newContent.content = '';
         this.state.filesAndFolders.push(newContent);
         console.log(this.state);
+        this.scheduleRender();
+    }
+    handleRestoreItem(e: Event) {
+        const customEvent = e as CustomEvent;
+        const itemId = customEvent.detail;
+        
+        const itemToRestore = this.state.trashedItems.find(item => item.id === itemId);
+        if (itemToRestore) {
+            this.state.filesAndFolders.push(itemToRestore);
+            this.state.trashedItems = this.state.trashedItems.filter((item: FileOrFolder) => item.id !== itemId);
+            this.scheduleRender();
+        }
+    }
+
+    handleEmptyTrash() {
+        this.state.trashedItems = [];
         this.scheduleRender();
     }
 
