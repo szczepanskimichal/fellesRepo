@@ -1,19 +1,19 @@
 import { BaseComponent } from "./BaseComponent";
 
 export class TrashBin extends BaseComponent {
-    private items: any[] = [];
-    private isExpanded = false;
+  private items: any[] = [];
+  private isExpanded = false;
 
-    set(property: string, value: any) {
-        if (property === 'items') {
-            this.items = value;
-            this.scheduleRender();
-        }
+  set(property: string, value: any) {
+    if (property === 'items') {
+      this.items = value;
+      this.scheduleRender();
     }
+  }
 
-    render() {
-        this.shadowRoot!.innerHTML = /*HTML*/`
-            <div>
+  render() {
+    this.shadowRoot!.innerHTML = /*HTML*/`
+    <div>
                 <button id="trash-icon" style="font-size: 24px; cursor: pointer; background: none; border: none;">
                 <img src="./src/components/trash-svgrepo-com.svg" alt="Trash Icon" style="width: 24px; height: 24px; vertical-align: middle;" />
                 (${this.items.length})
@@ -30,7 +30,7 @@ export class TrashBin extends BaseComponent {
                                         <button data-id="${item.id}">tilbake</button>
                                     </li>
                                 `).join('')}
-                            </ul>
+                                 </ul>
                             <button id="empty-trash">Tøm papirkurv</button>
                         `}
                     </fieldset>
@@ -38,29 +38,29 @@ export class TrashBin extends BaseComponent {
             </div>
         `;
 
-        // Event listener dla ikony kosza
-        const trashIcon = this.shadowRoot!.querySelector('#trash-icon');
-        trashIcon?.addEventListener('click', () => {
-            this.isExpanded = !this.isExpanded;
-            this.scheduleRender();
+    // Event listener dla ikony kosza
+    const trashIcon = this.shadowRoot!.querySelector('#trash-icon');
+    trashIcon?.addEventListener('click', () => {
+      this.isExpanded = !this.isExpanded;
+      this.scheduleRender();
+    });
+
+    if (this.isExpanded) {
+      // Event listeners dla przycisków przywracania
+      this.shadowRoot!.querySelectorAll('button[data-id]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = parseInt((e.target as HTMLElement).dataset.id!);
+          const event = new CustomEvent('restore-item', { detail: id });
+          this.dispatchEvent(event);
         });
+      });
 
-        if (this.isExpanded) {
-            // Event listeners dla przycisków przywracania
-            this.shadowRoot!.querySelectorAll('button[data-id]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const id = parseInt((e.target as HTMLElement).dataset.id!);
-                    const event = new CustomEvent('restore-item', { detail: id });
-                    this.dispatchEvent(event);
-                });
-            });
-
-            // Event listener dla opróżnienia kosza
-            const emptyTrashBtn = this.shadowRoot!.querySelector('#empty-trash');
-            emptyTrashBtn?.addEventListener('click', () => {
-                const event = new CustomEvent('empty-trash');
-                this.dispatchEvent(event);
-            });
-        }
+      // Event listener dla opróżnienia kosza
+      const emptyTrashBtn = this.shadowRoot!.querySelector('#empty-trash');
+      emptyTrashBtn?.addEventListener('click', () => {
+        const event = new CustomEvent('empty-trash');
+        this.dispatchEvent(event);
+      });
     }
+  }
 }
