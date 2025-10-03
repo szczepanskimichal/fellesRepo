@@ -12,6 +12,7 @@ export class DeleteFileOrFolder extends BaseComponent {
     }
 
     render() {
+        const checkedItem = this
        const isInInitialPhase = this.state.isInInitialPhase;
         this.shadowRoot!.innerHTML = /*HTML*/`
             <fieldset>
@@ -38,7 +39,10 @@ export class DeleteFileOrFolder extends BaseComponent {
 
     handleDelete(){
         const event = new CustomEvent('delete-file-or-folder');
-        this.dispatchEvent(event);
+        const detail = {
+
+        }
+        this.dispatchEvent(event, id );
     }
 
     handleChangePhase(isInInitialPhase: boolean) {

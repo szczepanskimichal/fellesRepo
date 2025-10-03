@@ -1,52 +1,23 @@
 import { BaseComponent } from "./BaseComponent";
+import type { FileOrFolder } from "../types";
 
 export class TrashBin extends BaseComponent {
-  private items: any[] = [];
-  private isExpanded = false;
+  static props = ['items', 'marked-files-and-folders'];
 
-  set(property: string, value: any) {
-    if (property === 'items') {
-      this.items = value;
-      this.scheduleRender();
-    }
-  }
 
   render() {
-    this.shadowRoot!.innerHTML = /*HTML*/`
-    <div>
-                <button id="trash-icon" style="font-size: 24px; cursor: pointer; background: none; border: none;">
-                <img src="./src/components/trash-svgrepo-com.svg" alt="Trash Icon" style="width: 24px; height: 24px; vertical-align: middle;" />
-                (${this.items.length})
-                 
-                </button>
-                ${this.isExpanded ? /*HTML*/`
-                    <fieldset>
-                        <legend>Papirkurv</legend>
-                        ${this.items.length === 0 ? '<p>Papirkurven er tom.</p>' : /*HTML*/`
-                            <ul>
-                                ${this.items.map(item => /*HTML*/`
-                                    <li>
-                                        ${item.name} ${item.content !== undefined ? '(fil)' : '(mappe)'}
-                                        <button data-id="${item.id}">tilbake</button>
-                                    </li>
-                                `).join('')}
-                                 </ul>
-                            <button id="empty-trash">Tøm papirkurv</button>
-                        `}
-                    </fieldset>
-                ` : ''}
-            </div>
-        `;
+    const filesAndFolders: FileOrFolder[] = this.get('items') || [];
+    const markedFilesAndFolders = this.get('marked-files-and-folders') || [];
+    console.log('rendering trash bin', filesAndFolders);
+    this.shadowRoot!.innerHTML = /*HTML*/
+    `<fieldset>
+        <legend>Papirkurv <img src="./src/components/trash-svgrepo-com.svg" alt="Trash Icon" style="width: 24px; height: 24px; vertical-align: middle;" />
+          (${filesAndFolders.filter(f => f.isTrash).length}) </legend>
+        ${filesAndFolders.length === 0 ? '<p>Tom papirkurv</p>' : ''}
+           <button id="empty-trash">Tøm papirkurv</button>
+        </fieldset>`;
 
-    // Event listener dla ikony kosza
-    const trashIcon = this.shadowRoot!.querySelector('#trash-icon');
-    trashIcon?.addEventListener('click', () => {
-      this.isExpanded = !this.isExpanded;
-      this.scheduleRender();
-    });
-
-    if (this.isExpanded) {
-      // Event listeners dla przycisków przywracania
+    // filesAndFolders.addEventListener('click', (e) => {
       this.shadowRoot!.querySelectorAll('button[data-id]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           const id = parseInt((e.target as HTMLElement).dataset.id!);
@@ -55,7 +26,6 @@ export class TrashBin extends BaseComponent {
         });
       });
 
-      // Event listener dla opróżnienia kosza
       const emptyTrashBtn = this.shadowRoot!.querySelector('#empty-trash');
       emptyTrashBtn?.addEventListener('click', () => {
         const event = new CustomEvent('empty-trash');
@@ -63,4 +33,3 @@ export class TrashBin extends BaseComponent {
       });
     }
   }
-}

@@ -3,10 +3,12 @@ import type { FileOrFolder } from "../types";
 
 export class FilesAndFolders extends BaseComponent {
     static props=['items', 'parent-folder', 'marked-files-and-folders'];
+
     render() {
-        const filesAndFolders = this.get('items') as FileOrFolder[];
+        const filesAndFolders = this.get('items').filter((f: FileOrFolder) => !f.isTrash) as FileOrFolder[];
         const parentFolder = this.get('parent-folder') as number|| false;
         const markedFilesAndFolders = this.get('marked-files-and-folders') || [];
+        
         console.log(markedFilesAndFolders);
         console.log('rendering files and folders', filesAndFolders);
         this.shadowRoot!.innerHTML = /*HTML*/`

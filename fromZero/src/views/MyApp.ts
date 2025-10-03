@@ -7,8 +7,8 @@ import type { TrashBin } from "../components/TrashBin";
 export class MyApp extends BaseComponent {
     private state: AppState = {
         filesAndFolders: [
-            { id: 1, name: 'Handlelister', isTrash: false },
-            { id: 2, name: 'Ting som skal fikses', isTrash: false },
+            { id: 1, name: 'Handlelister', isTrash: false},
+            { id: 2, name: 'Ting som skal fikses', isTrash: false},
             { id: 3, name: 'Oktober', parentId: 1 , isTrash: false},
             { id: 4, name: 'Tirsdag 15.', parentId: 3, content: 'melk\nbrød\nost\n' , isTrash: false},
             { id: 5, name: 'Bad', parentId: 2, content: 'Lekkasje, bla bla' , isTrash: false},
@@ -16,7 +16,8 @@ export class MyApp extends BaseComponent {
             { id: 8, name: 'Januar', parentId: 1, content: 'test', isTrash: false},
         ],
         markedFilesAndFolders: new Set<number>(),
-        trashedItems: [] = [],
+        // trashedItems: [] = [],
+        
     };
 
     render() {
@@ -52,21 +53,15 @@ export class MyApp extends BaseComponent {
 
         const trashBin = this.shadowRoot!.querySelector('trash-bin') as TrashBin;
         if (trashBin) {
-            trashBin.set('items', this.state.trashedItems);
+            const filteredItems = this.state.filesAndFolders.filter( i => i.isTrash)
+            trashBin.set('items', filteredItems);
             trashBin.addEventListener('restore-item', this.handleRestoreItem.bind(this));
             trashBin.addEventListener('empty-trash', this.handleEmptyTrash.bind(this));
         }
     }
 
     handleDelete() {
-        const itemsToTrash = this.state.filesAndFolders.filter(
-            f => this.state.markedFilesAndFolders.has(f.id)
-        );
-        
-        this.state.trashedItems.push(...itemsToTrash);
-        this.state.filesAndFolders = this.state.filesAndFolders.filter(
-            f => !this.state.markedFilesAndFolders.has(f.id)
-        );
+
         this.state.markedFilesAndFolders.clear();
         this.scheduleRender();
     }
@@ -83,7 +78,7 @@ export class MyApp extends BaseComponent {
         const newContent : FileOrFolder ={
             id: Math.max(...this.state.filesAndFolders.map(f => f.id)) + 1,
             name: customEvent.detail.name,
-            
+            isTrash: false,
             // parentId: this.state.currentId,
         }
         const current = this.state.filesAndFolders.find(f => f.id == this.state.currentId)!;
@@ -99,16 +94,16 @@ export class MyApp extends BaseComponent {
         const customEvent = e as CustomEvent;
         const itemId = customEvent.detail;
         
-        const itemToRestore = this.state.trashedItems.find(item => item.id === itemId);
+        const itemToRestore = this.state.filesAndFolders.filter(item => item.isTrash === itemId);
         if (itemToRestore) {
-            this.state.filesAndFolders.push(itemToRestore);
-            this.state.trashedItems = this.state.trashedItems.filter((item: FileOrFolder) => item.id !== itemId);
+            this.state.filesAndFolders.push(...itemToRestore);
+            this.state.filesAndFolders = this.state.filesAndFolders.filter((item: FileOrFolder) => item.id !== itemId);
             this.scheduleRender();
         }
     }
 
     handleEmptyTrash() {
-        this.state.trashedItems = [];
+        this.state.filesAndFolders.filter(f => {f.isTrash = false})
         this.scheduleRender();
     }
 

@@ -2,7 +2,7 @@ export interface AppState{
     currentId?: number;
     filesAndFolders: FileOrFolder[];
     markedFilesAndFolders: Set<number>;
-    trashedItems: FileOrFolder[];
+    // trashedItems: FileOrFolder[];
 }
 
 export interface FileOrFolder{
@@ -10,5 +10,6 @@ export interface FileOrFolder{
     name: string;
     content?: string;
     parentId?: number;
-    isTrash: boolean
+    isTrash: boolean;
+    isChecked?: boolean; 
 }
