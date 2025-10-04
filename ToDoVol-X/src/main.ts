@@ -1,36 +1,47 @@
+import './style.css';
 const taskNameInputElement: HTMLInputElement = document.querySelector('#name')!;
 const addButtonElement: HTMLButtonElement = document.querySelector('button')!;
 const taskContainerElement: HTMLElement = document.querySelector('.tasks')!;
 
 
-const tasks: {
-  name: string;
+interface Task{
+  title: string;
   done: boolean;
-}[] = [
-  { name: "Kast soppel", done: false },
-  { name: "trene", done: true },
-  { name: "lage mat", done: true },
-  { name: "vaske klær", done: false },
-  { name: "lage matpakke", done: false },
-  { name: "handle mat", done: false }
+  category?: string;
+}
+
+const categories: string[] = ['Personal', 'Work', 'Shopping', 'Others'];
+const tasks: Task[] = [
+  { title: "Kast soppel", done: false, category: "Others" },
+  { title: "trene", done: true, category: "Personal" },
+  { title: "lage mat", done: true, category: "Personal" },
+  { title: "vaske klær", done: false, category: "Personal" },
+  { title: "lage matpakke", done: false, category: "Personal" },
+  { title: "handle mat", done: false, category: "Shopping" },
 ];
 
 const render = () => {
   taskContainerElement.innerHTML = '';
   tasks.forEach((task, index) => { 
     const taskElement:HTMLElement = document.createElement('li');
+    // dodaje tutaj kategorie, sprawdz w developer tools
+    if (task.category) {
+      // konwertuje nazwe kategorii na nazwe klasy CSS
+      const cssClassName = task.category.toLowerCase().replace('others', 'other');
+      taskElement.classList.add(cssClassName);
+    }
     const id: string = `task-${index}`;
     const labelElement:HTMLElement = document.createElement('label');
-    labelElement.textContent = task.name;
+    labelElement.textContent = task.title;
     labelElement.setAttribute('for', id);
     const checboxElement: HTMLInputElement = document.createElement('input');
     checboxElement.type = 'checkbox';
-    checboxElement.name = task.name;
+    checboxElement.title = task.title;
     checboxElement.id = id;
     //te 2 linijki ponizej ustawia checkbox jako zaznaczony
     //  jezeli task.done jest true i odpowiada za poprawne odznaczanie/zaznaczanie
     checboxElement.checked = task.done;
-    checboxElement.addEventListener('change', (event: Event) => {
+    checboxElement.addEventListener('change', () => {
       task.done = !task.done;
     })
     // tworze i wstrzykuje elementy!!!!!!!!!!
@@ -40,17 +51,16 @@ const render = () => {
   });
 };
 
-const addTask =(taskName:string) => {
-  tasks.push({ name: taskName, done: false }); // Add the new task to the tasks array
+const addTask =(taskName: Task) => {
+  tasks.push(taskName); // Add the new task to the tasks array
 }
 
 addButtonElement.addEventListener('click', (event: Event) => {
-  event.preventDefault();
-  const taskName = taskNameInputElement.value.trim();
-  if (taskName) {
-    addTask(taskName);
-    taskNameInputElement.value = ''; // Clear the input field
-    render(); // Re-render the task list
-  }
-});
+ event.preventDefault(); // Prevent the default form submission behavior
+  if (taskNameInputElement.value.trim() !== '') {
+    event.preventDefault();
+    addTask({title: taskNameInputElement.value, done: false});
+    render();
+}});
+addTask({title: "Lære videre", done: true});
 render();

@@ -49,3 +49,34 @@ li {
   justify-content: space-between;
   align-items: center;
 }
+.category {
+  align-items: center;
+  display: flex;
+  list-style-type: none ;
+}
+.category input {
+  margin-right: 10px;
+}
+.tasks {
+
+}
+.task.input {
+  margin-left: 10px;
+}
+.personal {
+  color: blueviolet;
+  list-style-type: circle;
+}
+.work {
+  color: orange;
+  list-style-type: square;
+}
+.other {
+  color: lightgreen;
+  list-style-type: disc;
+}
+.shopping {
+  color: lightcoral;
+  list-style-type:georgian;
+  text-decoration: underline;
+}
