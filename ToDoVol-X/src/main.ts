@@ -1,3 +1,5 @@
+const taskNameInputElement: HTMLInputElement = document.querySelector('#name')!;
+const addButtonElement: HTMLButtonElement = document.querySelector('button')!;
 const taskContainerElement: HTMLElement = document.querySelector('.tasks')!;
 
 const tasks: string[] = ["Kast soppel", "trene", "lage mat", "vaske klær", "lage matpakke", "handle mat"];
@@ -11,4 +13,17 @@ const render = () => {
   });
 };
 
+const addTask =(task:string) => {
+  tasks.push(task);
+}
+
+addButtonElement.addEventListener('click', (event: Event) => {
+  event.preventDefault();
+  const taskName = taskNameInputElement.value.trim();
+  if (taskName) {
+    addTask(taskName);
+    taskNameInputElement.value = ''; // Clear the input field
+    render(); // Re-render the task list
+  }
+});
 render();
