@@ -2,6 +2,9 @@ import './style.css';
 const taskNameInputElement: HTMLInputElement = document.querySelector('#name')!;
 const addButtonElement: HTMLButtonElement = document.querySelector('button')!;
 const taskContainerElement: HTMLElement = document.querySelector('.tasks')!;
+const categoriesContainerElement: HTMLElement = document.querySelector('.categories')!;
+
+let selectedCategory: Category;
 
 type Category = 'Personal' | 'Work' | 'Shopping' | 'Others';
 interface Task{
@@ -11,7 +14,7 @@ interface Task{
   // union types!!!
 }
 
-const categories: string[] = ['Personal', 'Work', 'Shopping', 'Others'];
+const categories: Category[] = ['Personal', 'Work', 'Shopping', 'Others'];
 const tasks: Task[] = [
   { title: "Kast soppel", done: false, category: "Others" },
   { title: "trene", done: true, category: "Personal" },
@@ -52,13 +55,31 @@ const render = () => {
   });
 };
 
+const renderCategories = () => {
+categories.forEach((category)=> {
+  const categoryElement: HTMLElement = document.createElement('li');
+  const radioInputElement: HTMLInputElement = document.createElement('input');
+  radioInputElement.type = 'radio';
+  radioInputElement.name = 'category';
+  radioInputElement.value = category;
+  radioInputElement.id = `category-${category.toUpperCase()}`;
+  radioInputElement.addEventListener('change', () => {
+    selectedCategory = category;
+  });
+  const labelElement: HTMLElement = document.createElement('label');
+  labelElement.setAttribute('for', radioInputElement.id);
+  categoryElement.textContent = category;
+  categoryElement.appendChild(radioInputElement); 
+  categoriesContainerElement.appendChild(categoryElement);
+});
+}
+
+
 const addTask =(taskName: Task) => {
   tasks.push(taskName); // Add the new task to the tasks array
 }
 
 addButtonElement.addEventListener('click', (event: Event) => {
-  const selectedRadioElement : HTMLInputElement = document.querySelector("input[type='radio']:checked")!;
-  const selectedCategory: Category = selectedRadioElement.value as Category;
   event.preventDefault(); // Prevent the default form submission behavior
   
     event.preventDefault();
@@ -69,4 +90,5 @@ addButtonElement.addEventListener('click', (event: Event) => {
     render();
 });
 addTask({title: "Lære videre", done: true, category: "Others"});
+renderCategories();
 render();
