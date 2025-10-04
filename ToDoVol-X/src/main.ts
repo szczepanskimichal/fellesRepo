@@ -10,7 +10,7 @@ const categoriesContainerElement: HTMLElement = document.querySelector('.categor
 
 let selectedCategory: Category = 'Personal'; // domyślna kategoria
 
-const categories: Category[] = ['Personal', 'Work', 'Shopping', 'Others'];
+const categories: Category[] = ['Personal', 'Work', 'Shopping', 'Others', 'test'];
 const tasks: Task[] = [
   { title: "Kast soppel", done: false, category: "Others" },
   { title: "lage mat", done: true, category: "Personal" },

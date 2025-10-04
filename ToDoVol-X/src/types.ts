@@ -1,4 +1,4 @@
-export type Category = 'Personal' | 'Work' | 'Shopping' | 'Others';
+export type Category = 'Personal' | 'Work' | 'Shopping' | 'Others' | 'test';
 export interface Task{
   title: string;
   done: boolean;
