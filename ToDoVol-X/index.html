@@ -10,6 +10,24 @@
     <form class="container" autocomplete="off">
     <label>Task</label>
     <input type="text" id="name" placeholder="Add a new task..." />
+    <ul class="categories">
+      <li>
+        <input type="radio" id="category-personal" name="category" value="Personal" />
+        <label for="category-personal">Personal</label>
+      </li>
+      <li>
+        <input type="radio" id="category-work" name="category" value="Work" />
+        <label for="category-work">Work</label>
+      </li>
+      <li>
+        <input type="radio" id="category-shopping" name="category" value="Shopping" />
+        <label for="category-shopping">Shopping</label>
+      </li>
+      <li>
+        <input type="radio" id="category-others" name="category" value="Others" />
+        <label for="category-others">Others</label>
+      </li>
+    </ul>
     <button type="submit">Add Task</button>
     <p>To do:</p>
     <ul class="tasks">

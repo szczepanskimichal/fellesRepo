@@ -3,11 +3,12 @@ const taskNameInputElement: HTMLInputElement = document.querySelector('#name')!;
 const addButtonElement: HTMLButtonElement = document.querySelector('button')!;
 const taskContainerElement: HTMLElement = document.querySelector('.tasks')!;
 
-
+type Category = 'Personal' | 'Work' | 'Shopping' | 'Others';
 interface Task{
   title: string;
   done: boolean;
-  category?: string;
+  category?: Category; // ogranicza kategorie do tych 4 wartosci, 
+  // union types!!!
 }
 
 const categories: string[] = ['Personal', 'Work', 'Shopping', 'Others'];
@@ -56,11 +57,16 @@ const addTask =(taskName: Task) => {
 }
 
 addButtonElement.addEventListener('click', (event: Event) => {
- event.preventDefault(); // Prevent the default form submission behavior
-  if (taskNameInputElement.value.trim() !== '') {
+  const selectedRadioElement : HTMLInputElement = document.querySelector("input[type='radio']:checked")!;
+  const selectedCategory: Category = selectedRadioElement.value as Category;
+  event.preventDefault(); // Prevent the default form submission behavior
+  
     event.preventDefault();
-    addTask({title: taskNameInputElement.value, done: false});
+    addTask({
+      title: taskNameInputElement.value,
+      done: false, 
+      category: selectedCategory});
     render();
-}});
-addTask({title: "Lære videre", done: true});
+});
+addTask({title: "Lære videre", done: true, category: "Others"});
 render();
