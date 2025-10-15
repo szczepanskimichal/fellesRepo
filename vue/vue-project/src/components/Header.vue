@@ -6,7 +6,7 @@ defineOptions({
 
 <template>
   <header>
-    <img src="/photos/logo.png" alt="Logo"/>
+    <img src="/photos/heart.png" alt="Logo"/>
   </header>
 </template>
 

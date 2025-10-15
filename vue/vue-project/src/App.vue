@@ -2,17 +2,18 @@
 import AppHeader from './components/Header.vue';
 import AppFooter from './components/Footer.vue';
 import CatCart from './components/CatCart.vue';
+import Banner from './components/Banner.vue';
 import cats from './assets/data';
 </script>
 
 
 <template>
+
   <AppHeader />
- 
-  
-<section id="banner">
-  <p>🐾 <strong>MEET OUR CATS:</strong> Adopt a furry friend today! 🐾</p>
-</section>
+  <Banner>
+    <p>🐾 <strong>MEET OUR CATS:</strong> Adopt a furry friend today! 🐾</p>
+  </Banner>
+
 <main>
    <CatCart v-for="cat in cats" :key="cat.name" :cat="cat"/>
 </main>
@@ -20,14 +21,7 @@ import cats from './assets/data';
 </template>
 
 <style scoped>
-/* BANNER STYLES */
-#banner{
-  width:100%;
-  background:#ffe97b;
-  padding:10px;
-  text-align:center;
-}
-/* ----------------- */
+
 
 
 
