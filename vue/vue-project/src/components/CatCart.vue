@@ -13,7 +13,7 @@ defineProps<{
 <template>
   <section class="cat-card">
     <CatCartImage :cat="cat" v-if="isImageLoaded" @click="isImageLoaded = false"/>
-<CatCardQuickView :cat="cat"/>
+    <CatCardQuickView :cat="cat" v-else v-on:to-image="isImageLoaded = true"/>
   </section>
 </template>
 <style scoped>
