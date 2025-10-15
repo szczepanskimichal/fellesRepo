@@ -1,8 +1,9 @@
 <script setup lang="ts">
-defineProps(['cat'])
+defineProps(['cat']);
+defineEmits(['to-quick-view']);
 </script>
 <template>
-      <img :src="`/photos/${cat.image}`" :alt="cat.name" />
+      <img :src="`/photos/${cat.image}`" :alt="cat.name" v-on:click="$emit('to-quick-view')"/>
 </template>
 <style scoped>
 /* RECIPE CARD IMAGE STYLES */

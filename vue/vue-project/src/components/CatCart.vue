@@ -6,14 +6,30 @@ import {ref} from 'vue';
 
 const isImageLoaded = ref(true);
 
+// Register components for dynamic usage by string name
+defineOptions({
+  components: {
+    CatCartImage,
+    CatCardQuickView
+  }
+});
+
 defineProps<{
   cat: Cat;
 }>();
 </script>
 <template>
   <section class="cat-card">
-    <CatCartImage :cat="cat" v-if="isImageLoaded" @click="isImageLoaded = false"/>
-    <CatCardQuickView :cat="cat" v-else v-on:to-image="isImageLoaded = true"/>
+    <!-- <CatCartImage :cat="cat" v-if="isImageLoaded" @click="isImageLoaded = false"/>
+    <CatCardQuickView :cat="cat" v-else v-on:to-image="isImageLoaded = true"/> -->
+
+    <!-- dynamics components -->
+     <component
+     v-bind:is="isImageLoaded ? 'CatCartImage' : 'CatCardQuickView'"
+     v-bind:cat="cat"
+      v-on:to-image="isImageLoaded = true"
+      v-on:to-quick-view="isImageLoaded = false"
+      />
   </section>
 </template>
 <style scoped>

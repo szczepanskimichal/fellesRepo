@@ -1,5 +1,6 @@
 <script setup lang="ts">
-defineProps(['cat'])
+defineProps(['cat']);
+defineEmits(['to-image']);
 </script>
 <template>
   <div class="quickview">
