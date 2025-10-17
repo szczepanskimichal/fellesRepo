@@ -4,6 +4,7 @@ import AppFooter from './components/Footer.vue';
 import CatCart from './components/CatCart.vue';
 import Banner from './components/Banner.vue';
 import cats from './assets/data';
+import Button from './components/Button.vue';
 </script>
 
 
@@ -16,42 +17,34 @@ import cats from './assets/data';
 
 <main>
    <CatCart v-for="cat in cats" :key="cat.name" :cat="cat"/>
+   <CatCart v-for="cat in cats" :key="cat.name" :cat="cat"/>
 </main>
+<Button>Show More!</Button>
 <AppFooter />
 </template>
 
 <style scoped>
-
-
-
-
-/* BUTTON STYLES */
-button{
-  cursor:pointer;
-  background: #D17862;
-  color:white;
-  font-weight:bold;
-  border: 0;
-  border-radius:5px;
-  padding:5px 15px;
-  font-size:1rem;
-  transition: transform 0.2s;
-  margin: 10px 0;
+.template{
+  max-width:1200px;
+  margin:0 auto;
+  box-shadow: 0 0 10px #ccc;
+  border-radius:10px;
+  overflow:hidden;
+  background:#f9f9f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
 }
-button:hover{
-  transform:scale(1.05);
-}
-/* ----------------- */
-
-
-
-/* RECIPE LIST STYLES */
 main{
   padding:10px;
   display:grid;
   grid-template-columns: 1fr;
   gap:10px;
   background:white;
+  ;
 }
 
 @media (min-width:414px){

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps(['cat']);
-defineEmits(['to-quick-view']);
+defineEmits(['to-quick-view']);//!!!
 </script>
 <template>
       <img :src="`/photos/${cat.image}`" :alt="cat.name" v-on:click="$emit('to-quick-view')"/>
