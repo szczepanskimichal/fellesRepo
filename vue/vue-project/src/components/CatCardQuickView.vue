@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps(['cat']);
-defineEmits(['to-image']);//remember about this!!!
+defineEmits(['to-image', 'to-cat']);//remember about this!!!
 import Button from './Button.vue';
 </script>
 <template>
