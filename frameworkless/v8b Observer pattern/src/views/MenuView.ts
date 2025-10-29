@@ -1,9 +1,8 @@
-import { BaseComponent } from "../components/BaseComponent";
 import type { MenuItem } from "../types";
 import { router } from "../routerInstance";
-import { appModel } from "../appModel";
+import { SubscriberComponent } from "../components/SubscriberComponent";
 
-export class MenuView extends BaseComponent {
+export class MenuView extends SubscriberComponent {
     // private selectedCategory: string | null = null;
     static props = ['selected-category'];
 
@@ -19,18 +18,22 @@ export class MenuView extends BaseComponent {
         return (this.get('selected-category') || null) as string | null;
     }
 
+    connectedCallback(): void {
+        super.connectedCallback(this.scheduleRender.bind(this));
+    }
+
     render() {
-        const state = appModel.state;
+        if(!this.state) return;
         this.shadowRoot!.innerHTML = /*HTML*/ `
             <h3>Kategorier</h3>
             <div id="categories">
-                ${state.categories.map((category: any) => /*HTML*/`   
+                ${this.state!.categories.map((category: any) => /*HTML*/`   
                     <button ${category === this.selectedCategory ? 'disabled' : ''}>${category}</button>
                 `).join('')}
             </div>
             <h3>Produkter ${this.selectedCategory ? `i kategorien ${this.selectedCategory}` : ''}</h3>
             <div id="menu-items">
-                ${this.createMenuItemList(state.menuItems)}
+                ${this.createMenuItemList(this.state!.menuItems)}
             </div>
         `;
         const categoryDiv = this.shadowRoot!.querySelector('#categories');
