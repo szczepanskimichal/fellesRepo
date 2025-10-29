@@ -15,10 +15,10 @@ export class MenuView extends BaseComponent {
         <h3>Kategorier</h3>
         <div id="categories">
             ${this.getCategories().map((category: any) => /*HTML*/`   
-                <button>${category}</button>
+                <button ${category === this.selectedCategory ? 'disabled' : ''}>${category}</button>
                 `).join('')}
         </div>
-        <h3>Produkter</h3>
+        <h3 ${this.selectedCategory ? `i kategorien ${this.selectedCategory}` : ''}>Produkter</h3>
             ${this.createMenuItemList()}
         `;
         const categoryDiv = this.shadowRoot!.querySelector('#categories');
@@ -40,7 +40,7 @@ export class MenuView extends BaseComponent {
         return menuItems.map(item => /*HTML*/`
             <li>
                 ${item.name} - ${item.price} kr
-                <button>les mer</button>
+                <button>Les mer</button>
             </li>
         `).join('');
     }
