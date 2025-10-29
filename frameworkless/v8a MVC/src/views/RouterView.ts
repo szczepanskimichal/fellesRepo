@@ -4,7 +4,7 @@ import { router } from "../routerInstance";
 
 
 
-export class AppView extends BaseComponent {
+export class RouterView extends BaseComponent {
 
   constructor() {
     super();
@@ -13,6 +13,8 @@ export class AppView extends BaseComponent {
       .addRoute('#menu', (params?: Params) => this.renderMenu(this.getMain()))
       .addRoute('#menu/:category', (params?: Params) => this.renderMenu(this.getMain(), params!))
       .addRoute('#menu-item/:id', (params?: Params) => this.renderMenuItem(this.getMain(), params!))
+      .addRoute('#add-category', (params?: Params) => this.renderAddCategory(this.getMain(), params!))
+      .addRoute('#add-menu-item', (params?: Params) => this.renderAddMenuItem(this.getMain(), params!))
       // .addRoute('#dummy/:country/:city/:zip', (params?: Params) => this.renderDummy(this.getMain(), params!))
       .setNotFound(() => {
         const main = this.getMain();
@@ -52,7 +54,15 @@ export class AppView extends BaseComponent {
     main.replaceChildren(menuView);
   }
 
-  
+  private renderAddCategory(main: HTMLElement, params: Params) {
+    const addCategoryView = document.createElement('add-category-view') as BaseComponent;
+    main.replaceChildren(addCategoryView);
+  }
+
+  private renderAddMenuItem(main: HTMLElement, params: Params) {
+    const addMenuItemView = document.createElement('add-menu-item-view') as BaseComponent;
+    main.replaceChildren(addMenuItemView);
+  }
 
   // private renderDummy(main: HTMLElement, params: Params) {
   //   const dummyParams = params as DummyParams;

@@ -1,5 +1,4 @@
 import { BaseComponent } from "../components/BaseComponent";
-import type { MenuItem } from "../types";
 import { router } from "../routerInstance";
 import { appModel } from "../appModel";
 
