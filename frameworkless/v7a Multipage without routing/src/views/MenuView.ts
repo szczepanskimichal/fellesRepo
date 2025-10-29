@@ -12,17 +12,25 @@ export class MenuView extends BaseComponent {
     }
     render() {
         this.shadowRoot!.innerHTML = /*HTML*/ `
-        <h3>Kategorier</h1>
-        <ul>
-            ${this.getCategories().map((item: any) => /*HTML*/`   
-                <li>
-                    <h2>${item.name} - ${item.price} kr</h2>
-                    <p>${item.description || ''}</p>
-                </li>
-            `).join('')}
+        <h3>Kategorier</h3>
+        <div id="categories">
+            ${this.getCategories().map((category: any) => /*HTML*/`   
+                <button>${category}</button>
+                `).join('')}
+        </div>
+        <h3>Produkter</h3>
             ${this.createMenuItemList()}
-        </ul>
         `;
+        const categoryDiv = this.shadowRoot!.querySelector('#categories');
+        categoryDiv?.addEventListener('click', this.handleCategoryClick.bind(this));
+    }
+
+    private handleCategoryClick(e: Event) {
+        const target = e.target as HTMLElement;
+        if (target.tagName === 'BUTTON') {
+            this.selectedCategory = target.textContent;
+            this.render();
+        }
     }
 
     private createMenuItemList() {
