@@ -10,6 +10,11 @@ constructor(initialState?: AppState) {
   this._state = initialState || {menuItems: [], categories: []};
 }
 
+public static getMenuItem(id: number, state: AppState): MenuItem | undefined {
+        return state.menuItems.find(mi => mi.id === id);
+    }
+
+
 public subscribe(subscriber: Function): void {
   this.subscribers.push(subscriber);
   const state = this.getState();
@@ -39,7 +44,14 @@ private getState(){
     this._state.menuItems.push(menuItem);
     this.notifySubscribers();
   }
+
+  public deleteMenuItem(menuItemId: number) {
+    this._state.menuItems = this._state.menuItems.filter(mi => mi.id !== menuItemId);
+    this.notifySubscribers();
+
+}
+
 }
 
 export const appModel = new AppModel(initialAppState);
-appModel.addCategory('something - robie ten przycisk z appModel!!!');
+// appModel.addCategory('something - robie ten przycisk z appModel!!!');

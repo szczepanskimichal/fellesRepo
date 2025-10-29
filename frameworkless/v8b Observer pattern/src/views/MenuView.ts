@@ -1,6 +1,7 @@
 import type { MenuItem } from "../types";
 import { router } from "../routerInstance";
 import { SubscriberComponent } from "../components/SubscriberComponent";
+import {appModel} from "../appModel";
 
 export class MenuView extends SubscriberComponent {
     // private selectedCategory: string | null = null;
@@ -16,10 +17,6 @@ export class MenuView extends SubscriberComponent {
 
     get selectedCategory(): string | null {
         return (this.get('selected-category') || null) as string | null;
-    }
-
-    connectedCallback(): void {
-        super.connectedCallback(this.scheduleRender.bind(this));
     }
 
     render() {
@@ -53,8 +50,15 @@ export class MenuView extends SubscriberComponent {
     private handleMenuItemClick(event: Event) {
         const target = event.target as HTMLElement;
         if (target.tagName === 'BUTTON') {
-            const menuItemId = target.dataset.id;
+            const menuItemId = parseInt(target.dataset.id!);
+            const action = target.dataset.action;
+            if(action === 'details') {
+                router.navigate(`#menu-item/${menuItemId}`);
+            } else if (action === 'delete') {
+                appModel.deleteMenuItem(menuItemId);
+            }
             router.navigate(`#menu-item/${menuItemId}`);
+
             // const detail = {
             //     id: parseInt(target.dataset.id!),
             // };
@@ -71,6 +75,8 @@ export class MenuView extends SubscriberComponent {
             <div>
                 ${menuItem.name} - ${menuItem.price} kr
                 <button data-id="${menuItem.id}">Se detaljer</button>
+                <button data-action="details" data-id="${menuItem.id}">Se detaljer</button>
+                <button data-action="delete" data-id="${menuItem.id}">×</button>
             </div>
         `).join('');
     }

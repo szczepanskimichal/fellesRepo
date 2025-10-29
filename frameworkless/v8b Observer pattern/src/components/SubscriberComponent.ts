@@ -5,6 +5,7 @@ import type { AppState } from "../types";
 
 export class SubscriberComponent extends BaseComponent {
     protected state: AppState | null = null;
+    private unsubscribeFn: Function | null = null;
     connectedCallback(): void {
         super.connectedCallback();
         appModel.subscribe((state: AppState)=>{
@@ -12,4 +13,8 @@ export class SubscriberComponent extends BaseComponent {
             this.scheduleRender();
         });
     }
+    disconnectedCallback(): void {
+        this.unsubscribeFn?.();
+        this.unsubscribeFn = null;
+}
 }
