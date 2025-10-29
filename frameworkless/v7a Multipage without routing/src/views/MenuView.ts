@@ -19,10 +19,26 @@ export class MenuView extends BaseComponent {
                 `).join('')}
         </div>
         <h3 ${this.selectedCategory ? `i kategorien ${this.selectedCategory}` : ''}>Produkter</h3>
-            ${this.createMenuItemList()}
+        <div id="menu-items">    
+        ${this.createMenuItemList()}
+        </div>
         `;
         const categoryDiv = this.shadowRoot!.querySelector('#categories');
         categoryDiv?.addEventListener('click', this.handleCategoryClick.bind(this));
+        const menuItemsDiv = this.shadowRoot!.querySelector('#menu-items');
+        menuItemsDiv?.addEventListener('click', this.handleMenuItemClick.bind(this));
+    }
+
+    private handleMenuItemClick(e: Event) {
+        const target = e.target as HTMLElement;
+        if (target.tagName === 'BUTTON') {
+           const detail = {
+            // category: this.selectedCategory,
+            id: parseInt(target.dataset.id!)
+           };
+           const event = new CustomEvent('menu-item-selected', { detail});
+           this.dispatchEvent(event); // we need to catch this dispatch in AppView!!!
+        }
     }
 
     private handleCategoryClick(e: Event) {
@@ -34,14 +50,14 @@ export class MenuView extends BaseComponent {
     }
 
     private createMenuItemList() {
-        if (!this.selectedCategory === null) return '<i>Velg en kategori for å se menyen.</i>'
-        const menuItems = this.getMenuItems().filter(i => i.category === this.selectedCategory);
+        if (this.selectedCategory === null) return '<i>Velg en kategori for å se menyen.</i>';
+        const menuItems = this.getMenuItems().filter(menuItem => menuItem.category === this.selectedCategory);
         if (menuItems.length === 0) return '<i>Ingen menyartikler i denne kategorien.</i>';
-        return menuItems.map(item => /*HTML*/`
-            <li>
-                ${item.name} - ${item.price} kr
-                <button>Les mer</button>
-            </li>
+        return menuItems.map(menuItem => /*HTML*/`
+            <div>
+                ${menuItem.name} - ${menuItem.price} kr
+                <button data-id="${menuItem.id}">Les mer</button>
+            </div>
         `).join('');
     }
 }

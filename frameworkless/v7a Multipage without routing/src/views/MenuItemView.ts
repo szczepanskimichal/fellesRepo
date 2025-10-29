@@ -10,9 +10,19 @@ export class MenuItemView extends BaseComponent {
     render() {
         const item = this.getMenuItem();
         this.shadowRoot!.innerHTML = /*HTML*/ `
-            <h1>${item.name}</h1>
+            <h3>${item.name}</h3>
             <p>Pris: ${item.price} kr</p>
             <p>${item.description || ''}</p>
+            <img src="${item.imageUrl || ''}" alt="${item.name}" width="200"/>
+            <br/>
+            <button>Tilbake til menyen</button>
         `;
+        const backButton = this.shadowRoot!.querySelector('button');
+        backButton?.addEventListener('click', this.handleBackButtonClick.bind(this));
+    }
+
+    private handleBackButtonClick() {
+        const event = new CustomEvent('back-to-menu', {});
+        this.dispatchEvent(event);
     }
 }
