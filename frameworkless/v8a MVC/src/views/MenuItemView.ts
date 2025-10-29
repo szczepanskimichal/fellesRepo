@@ -1,14 +1,15 @@
 import { BaseComponent } from "../components/BaseComponent";
 import type { MenuItem } from "../types";
 import { router } from "../routerInstance";
+import { appModel } from "../appModel";
 
 export class MenuItemView extends BaseComponent {
-    static props = ['menu-item'];
-    get menuItem(): MenuItem {
-        return (this.get('menu-item') || []) as MenuItem;
+    static props = ['id'];
+    get menuItemId(): number {
+        return parseInt(this.get('id') || '');
     }
     render() {
-        const item = this.menuItem;
+        const item = appModel.getMenuItem(this.menuItemId);
         this.shadowRoot!.innerHTML = /*HTML*/ `
             <h3>${item.name}</h3>
             <div>

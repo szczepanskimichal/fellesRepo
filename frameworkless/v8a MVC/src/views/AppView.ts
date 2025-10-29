@@ -39,7 +39,7 @@ export class AppView extends BaseComponent {
   private renderMenuItem(main: HTMLElement, params: Params) {
     const menuItemParams = params as MenuItemParams;
     const menuItemView = document.createElement('menu-item-view') as BaseComponent;
-    menuItemView.set('meniu-item-id', parseInt(menuItemParams.id));
+    menuItemView.set('id', parseInt(menuItemParams.id));
     main.replaceChildren(menuItemView);
   }
 

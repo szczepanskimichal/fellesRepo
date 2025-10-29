@@ -1,34 +1,36 @@
 import { BaseComponent } from "../components/BaseComponent";
 import type { MenuItem } from "../types";
 import { router } from "../routerInstance";
+import { appModel } from "../appModel";
 
 export class MenuView extends BaseComponent {
     // private selectedCategory: string | null = null;
-    static props = ['menu-items', 'categories', 'selected-category'];
+    static props = ['selected-category'];
 
-    get categories(): string[] {
-        return (this.get('categories') || []) as string[];
-    }
+    // get categories(): string[] {
+    //     return (this.get('categories') || []) as string[];
+    // }
 
-    get menuItems(): MenuItem[] {
-        return (this.get('menu-items') || []) as MenuItem[];
-    }
+    // get menuItems(): MenuItem[] {
+    //     return (this.get('menu-items') || []) as MenuItem[];
+    // }
 
     get selectedCategory(): string | null {
         return (this.get('selected-category') || null) as string | null;
     }
 
     render() {
+        const state = appModel.state;
         this.shadowRoot!.innerHTML = /*HTML*/ `
             <h3>Kategorier</h3>
             <div id="categories">
-                ${this.categories.map((category: any) => /*HTML*/`   
+                ${state.categories.map((category: any) => /*HTML*/`   
                     <button ${category === this.selectedCategory ? 'disabled' : ''}>${category}</button>
                 `).join('')}
             </div>
             <h3>Produkter ${this.selectedCategory ? `i kategorien ${this.selectedCategory}` : ''}</h3>
             <div id="menu-items">
-                ${this.createMenuItemList()}
+                ${this.createMenuItemList(state.menuItems)}
             </div>
         `;
         const categoryDiv = this.shadowRoot!.querySelector('#categories');
@@ -42,8 +44,6 @@ export class MenuView extends BaseComponent {
         if (target.tagName === 'BUTTON') {
             const category = target.textContent;
             router.navigate(`#menu/${category}`);
-            // this.selectedCategory = target.textContent;
-            // this.render();
         }
     }
 
@@ -60,9 +60,9 @@ export class MenuView extends BaseComponent {
         }
     }
 
-    private createMenuItemList() {
+    private createMenuItemList(menuItems: MenuItem[]): string {
         if (this.selectedCategory === null) return '<i>Velg en kategori for å se menyen.</i>'
-        const menuItems = this.menuItems.filter(mi => mi.category === this.selectedCategory);
+        menuItems = menuItems.filter(mi => mi.category === this.selectedCategory);
         if (menuItems.length === 0) return '<i>Ingen menyartikler i denne kategorien.</i>';
         return menuItems.map(menuItem => /*HTML*/`
             <div>
