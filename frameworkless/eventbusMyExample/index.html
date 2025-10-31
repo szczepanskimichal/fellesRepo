@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Bus — prosty przykład</title>
+    <script type="module" src="/src/main.ts"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      button {
+        margin-right: 10px;
+        padding: 8px 12px;
+      }
+      #screen {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: darkblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Bus – prosty przykład w Vite + TS</h1>
+
+    <button id="notifyBtn">📢 Wyślij wiadomość</button>
+    <button id="resetBtn">🔁 Wyczyść ekran</button>
+    <button id="colorBtn">🟠 Zmień kolor ekranu</button>
+
+    <div id="screen">(Ekran czeka na wiadomość...)</div>
+  </body>
+</html>
