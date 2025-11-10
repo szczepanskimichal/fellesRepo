@@ -19,9 +19,9 @@ import {
 <template>
   <Menubar>
     <MenubarMenu>
-      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarTrigger class="">File</MenubarTrigger>
       <MenubarContent>
-        <MenubarItem>
+        <MenubarItem class="menubar-item">
           New Tab <MenubarShortcut>⌘T</MenubarShortcut>
         </MenubarItem>
         <MenubarItem>
