@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-const lightOn = ref(true);
+const lightOn = ref(false);
 </script>
 
 <template>
@@ -10,7 +10,7 @@ const lightOn = ref(true);
       <div v-if="lightOn" class="light-bg"></div>
       <img src="/q-svgrepo-com.svg" alt="Light On" />
     </div>
-    <button @click="lightOn = !lightOn">Toggle Light</button>
+    <button @:click="lightOn = !lightOn">Toggle Light</button>
   </div>
 </template>
 
