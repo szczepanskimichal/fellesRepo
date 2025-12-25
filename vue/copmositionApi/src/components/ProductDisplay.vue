@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
   import socksGreenImage from '@/assets/images/socks_green.jpeg';
   import socksBlueImage from '@/assets/images/socks_blue.jpeg';
+import ReviewForm from './ReviewForm.vue';
   
   const props = defineProps({
     premium: {
@@ -96,4 +97,5 @@ import { ref, computed } from 'vue';
       </div>
     </div>
   </div>
+  <ReviewForm />
 </template>
