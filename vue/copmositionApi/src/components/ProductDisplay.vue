@@ -1,8 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue';
-  import socksGreenImage from '@/assets/images/socks_green.jpeg';
-  import socksBlueImage from '@/assets/images/socks_blue.jpeg';
-import ReviewForm from './ReviewForm.vue';
+import socksGreenImage from '@/assets/images/socks_green.jpeg';
+import socksBlueImage from '@/assets/images/socks_blue.jpeg';
+import ReviewForm from '@/components/ReviewForm.vue';
+import ReviewList from '@/components/ReviewList.vue';
   
   const props = defineProps({
     premium: {
@@ -10,6 +11,11 @@ import ReviewForm from './ReviewForm.vue';
       required: true
     }
   })
+  const reviews = ref([]);
+  const addReview = (review) => {
+    if(!review) return;
+    reviews.value.push(review);
+  }
 
   const brand = ref('Mastery Vue');
   const product = ref("Socks");
@@ -95,7 +101,9 @@ import ReviewForm from './ReviewForm.vue';
         >Add to cart</button>
         <button class="button" @:click="removeFromCart">Remove</button>
       </div>
-    </div>
+    </div>  
+    <ReviewList  :reviews="reviews" v-if="reviews.length > 0"/>
+    <ReviewForm @review-submitted="addReview" />
   </div>
-  <ReviewForm />
+
 </template>
