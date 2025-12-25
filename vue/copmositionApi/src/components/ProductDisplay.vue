@@ -3,6 +3,13 @@ import { ref, computed } from 'vue';
   import socksGreenImage from '@/assets/images/socks_green.jpeg';
   import socksBlueImage from '@/assets/images/socks_blue.jpeg';
   
+  const props = defineProps({
+    premium: {
+      type: Boolean,
+      required: true
+    }
+  })
+
   const brand = ref('Mastery Vue');
   const product = ref("Socks");
   const description = ref('this is a product description')+
@@ -17,14 +24,14 @@ import { ref, computed } from 'vue';
     { id: 2232, color: 'blue', image: socksBlueImage, quantity: 0 },
   ]);
   const sizes = ref(['S', 'M', 'L', 'XL']);
+  const emit = defineEmits(['add-to-cart', 'remove-from-cart']);
   const addToCart = () => {
-    cart.value++;
+    emit('add-to-cart', variants.value[selectedVariant.value].id);
   }
   const removeFromCart =()=>{
-    if(cart.value >=1){
-      cart.value--;
+    emit('remove-from-cart', variants.value[selectedVariant.value].id);
     }
-  }
+
   const updateVariant = (index) => {
     selectedVariant.value = index;
     // console.log(index);
@@ -43,6 +50,14 @@ import { ref, computed } from 'vue';
   const currentQuantity = computed(()=>{
     return variants.value[selectedVariant.value].quantity;
   });
+
+  const shipping = computed(()=>{
+    if(props.premium){
+      return 'Free';
+    } else {
+      return 4.99;
+    }
+  })
 </script>
 <template>
 <div class="product-displaty">
@@ -56,6 +71,7 @@ import { ref, computed } from 'vue';
         <p v-if="currentQuantity > 10">In stock</p>
         <p v-else-if="currentQuantity <= 10 && currentQuantity > 0">Almost sold out!!!</p>
         <p v-else>Out of stock</p>
+        <p>Shipping {{ shipping }}</p>
         <ul>
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
