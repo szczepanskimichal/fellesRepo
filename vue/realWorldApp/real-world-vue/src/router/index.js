@@ -85,6 +85,14 @@ const router = createRouter({
     component: NetworkError,
   }
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // return desired position
+    if(savedPosition){
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  }
 })
 
 export default router;
