@@ -16,7 +16,7 @@ const router = createRouter({
       props: route =>({ page: parseInt(route.query.page) || 1 })
     },
     {
-      path: '/event/:id',
+      path: '/events/:id',
       name: 'event-layout',
       component: EventLayout,
       props: true,
@@ -37,6 +37,29 @@ const router = createRouter({
           component: EventEdit,
         },
       ],
+    },
+    // redirects for old links, this is one of the ways to do it
+    // {
+    //   path:"/event/:id",
+    //   redirect:() => {
+    //     return { name: 'event-details' }
+    //   },
+    //     children: [
+    //     {path: 'register', redirect: () => ({ name: 'event-register' })},
+    //     {path: 'edit', redirect: () => ({ name: 'event-edit' })},
+    //     ]
+    // },
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   component: AboutView
+    // },
+    // another way to do redirects an alias
+    {
+      path:"/event/:afterEvent(.*)", // regex to match anything after /event/
+      redirect: to =>{
+        return { path: "events/" + to.params.afterEvent }
+      }
     },
     {
       path: '/about',
