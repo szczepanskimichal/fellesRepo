@@ -1,4 +1,3 @@
-// eslint-disable-next-line vue/multi-word-component-names
 <script setup>
 import { onMounted, ref } from 'vue'
 import EventService from '@/services/EventService.js'
