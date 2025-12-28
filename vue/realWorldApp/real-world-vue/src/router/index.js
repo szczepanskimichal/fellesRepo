@@ -15,7 +15,7 @@ const router = createRouter({
       path: '/event/:id',
       name: 'event-details',
       component: EventDetailsView,
-      props: true,
+      props: true, //!!!this is why i can't access id via $route.params.id in EventDetailsView.vue but via props
     },
     {
       path: '/about',
@@ -29,4 +29,4 @@ const router = createRouter({
   ],
 })
 
-export default router
+export default router;
