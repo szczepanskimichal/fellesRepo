@@ -7,7 +7,7 @@ const { id } = defineProps(['id'])
 
 const event = ref(null)
 onMounted(() => {
-  EventService.getEvent(id.value)
+  EventService.getEvent(id)
     .then(response => {
       event.value = response.data
     })

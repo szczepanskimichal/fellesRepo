@@ -1,10 +1,16 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { inject } from 'vue';
+
+const GlobalStore = inject("GlobalStore")
 </script>
 
 <template>
   <div class="layout">
     <header>
+      <div id="flashMessage" v-if="GlobalStore?.flashMessage">
+        {{ GlobalStore.flashMessage }}
+      </div>
     <div class="wrapper">
       <nav>
         <RouterLink :to="{name: 'event-list'}">Events</RouterLink> |
@@ -18,6 +24,19 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
+  @keyframes yellowfade {
+  from {
+    background: yellow;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+#flashMessage {
+  animation-name: yellowfade;
+  animation-duration: 3s;
+}
 .layout {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
