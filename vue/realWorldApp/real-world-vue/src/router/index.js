@@ -8,6 +8,8 @@ import EventEdit from '@/views/event/EventEdit.vue'
 import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
 
+// const savedScrollPositions = {}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -89,10 +91,30 @@ const router = createRouter({
     // return desired position
     if(savedPosition){
       return savedPosition;
-    } else {
-      return { top: 0 };
     }
+    return { left:0, top:0 }
   }
 })
+//   scrollBehavior(to, from, savedPosition) {
+//     // return desired position
+//     if(savedPosition){
+//       return savedPosition;
+//     }
+//     if(to.name === "event-list"){
+//       const position = savedScrollPositions[to.fullPath]
+//       if(typeof position === "number"){
+//         return {left:0, top: position}
+//       }
+//     }
+//     return { left:0, top:0 }
+//   }
+// })
+
+// router.beforeEach((to, from, next) => {
+//   if (from.name === 'event-list') {
+//     savedScrollPositions[from.fullPath] = window.scrollY
+//   }
+//   next()
+// })
 
 export default router;
