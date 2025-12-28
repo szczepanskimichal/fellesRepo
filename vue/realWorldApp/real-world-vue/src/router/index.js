@@ -20,24 +20,21 @@ const router = createRouter({
       name: 'event-layout',
       component: EventLayout,
       props: true,
-      children: [
+      children: [ // child routes!!! remember!!!
         {
           path: '',
           name: 'event-details',
           component: EventDetails,
-          props: true,
         },
         {
           path: 'register',
           name: 'event-register',
           component: EventRegister,
-          props: true,
         },
         {
           path: 'edit',
           name: 'event-edit',
           component: EventEdit,
-          props: true,
         },
       ],
     },
