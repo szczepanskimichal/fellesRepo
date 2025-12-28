@@ -15,7 +15,7 @@ const hasNextPage=computed(()=>{
 })
 
 const fetchEvents =()=>{
- EventService.getEvents(2, props.page)
+ EventService.getEvents(3, props.page) // this is for dispalying 3 events per page!!!
   .then((response)=>{
       events.value = response.data;
       totalEvents.value=response.headers['x-total-count']; // this is custom header from json-server
