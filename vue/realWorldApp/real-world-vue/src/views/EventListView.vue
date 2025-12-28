@@ -3,11 +3,12 @@ import EventCard from '@/components/EventCard.vue';
 import {ref, onMounted, watch, defineProps, computed} from 'vue';
 // import axios from 'axios';
 import EventService from '@/services/EventService';
+import { useRouter } from 'vue-router';
 
 const props = defineProps(['page']);
 const events = ref(null)
 const totalEvents = ref(0);
-
+const router = useRouter();
 const hasNextPage=computed(()=>{
   const totalPages = Math.ceil(totalEvents.value /2);
   // return props.page < totalPages ? true : false;
@@ -21,8 +22,9 @@ const fetchEvents =()=>{
       totalEvents.value=response.headers['x-total-count']; // this is custom header from json-server
       // console.log("events", response.data);
     })
-    .catch((error)=>{
-      console.log(error);
+    .catch(()=>{
+      // console.log(error);
+      router.push({name: 'NetworkError'});
     });
 }
 onMounted(()=>{
