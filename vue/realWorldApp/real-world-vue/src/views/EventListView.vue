@@ -1,39 +1,66 @@
-<script setup>
-import EventCard from '@/components/EventCard.vue';
-import {ref, onMounted, watch, defineProps, computed} from 'vue';
+<script lang="ts">
+// import { ref, onMounted, computed } from 'vue';
 // import axios from 'axios';
-import EventService from '@/services/EventService';
+import EventService from '../services/EventService';
 import { useRouter } from 'vue-router';
+import EventCard from '../components/EventCard.vue';
 
-const props = defineProps(['page']);
-const events = ref(null)
-const totalEvents = ref(0);
-const router = useRouter();
-const hasNextPage=computed(()=>{
-  const totalPages = Math.ceil(totalEvents.value /2);
-  // return props.page < totalPages ? true : false;
-  return props.page < totalPages;
-})
-
-const fetchEvents =()=>{
- EventService.getEvents(3, props.page) // this is for dispalying 3 events per page!!!
-  .then((response)=>{
-      events.value = response.data;
-      totalEvents.value=response.headers['x-total-count']; // this is custom header from json-server
-      // console.log("events", response.data);
-    })
-    .catch(()=>{
-      // console.log(error);
-      router.push({name: 'NetworkError'});
-    });
+interface Event {
+  id: number;
+  title: string;
+  description: string;
+  organizer: string;
+  date: string;
+  time: string;
+  location: string;
+  attendees: number;
 }
-onMounted(()=>{
-  fetchEvents();
-});
-watch(()=> props.page, ()=>{
-  events.value = null;
-  fetchEvents();
-});
+
+// Remove defineProps usage; use props from Options API instead
+
+export default {
+  name: 'EventListView',
+  components: { EventCard },
+  props: {
+    page: {
+      type: Number,
+      required: true
+    }
+  },
+  data() {
+    return {
+      events: null as Event[] | null,
+      totalEvents: 0
+    }
+  },
+  computed: {
+    hasNextPage(): boolean {
+      const totalPages = Math.ceil(this.totalEvents / 2);
+      return this.page < totalPages;
+    }
+  },
+  watch: {
+    page() {
+      this.events = null;
+      this.fetchEvents();
+    }
+  },
+  mounted() {
+    this.fetchEvents();
+  },
+  methods: {
+    fetchEvents() {
+      EventService.getEvents(3, this.page)
+        .then((response: any) => {
+          this.events = response.data;
+          this.totalEvents = response.headers['x-total-count'];
+        })
+        .catch(() => {
+          this.$router.push({ name: 'NetworkError' });
+        });
+    }
+  }
+}
 </script>
 
 <template>
