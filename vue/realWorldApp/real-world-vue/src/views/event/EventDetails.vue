@@ -1,10 +1,22 @@
 // eslint-disable-next-line vue/multi-word-component-names
-<script setup>
-const { event } = defineProps(['event'])
+<script lang="ts" setup>
+interface Event {
+  id: number;
+  title: string;
+  description: string;
+  organizer: string;
+  date: string;
+  time: string;
+  location: string;
+  attendees: number;
+}
+const props = defineProps<{
+  event: Event
+}>()
 </script>
 <template>
   <div>
-    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-    <p>{{ event.description }}</p>
+    <p>{{ props.event.time }} on {{ props.event.date }} @ {{ props.event.location }}</p>
+    <p>{{ props.event.description }}</p>
   </div>
 </template>
