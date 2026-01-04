@@ -10,6 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit -p tsconfig.json",
     "lint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/"
   },
