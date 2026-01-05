@@ -1,8 +1,15 @@
-import { createStore } from 'vuex'
+import { defineStore } from 'pinia';
+import type { EventItem } from '@/types';
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
-})
+export const useEventStore = defineStore('event', {
+  state: () => ({
+    events: [] as EventItem[],
+    totalEvents: 0,
+  }),
+  actions: {
+    setEvents(events: EventItem[], totalEvents: number) {
+      this.events = events;
+      this.totalEvents = totalEvents;
+    },
+  },
+});

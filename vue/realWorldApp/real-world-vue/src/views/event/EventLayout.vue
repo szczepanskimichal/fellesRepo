@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import EventService from '@/services/EventService.js'
 import router from '@/router';
 
+
 const { id } = defineProps(['id'])
 
 const event = ref(null)

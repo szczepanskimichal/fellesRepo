@@ -1,18 +1,10 @@
 // eslint-disable-next-line vue/multi-word-component-names
 <script lang="ts" setup>
-interface Event {
-  id: number;
-  title: string;
-  description: string;
-  organizer: string;
-  date: string;
-  time: string;
-  location: string;
-  attendees: number;
-}
+import { EventItem } from '../../types';
+
 const props = defineProps<{
-  event: Event
-}>()
+  event: EventItem
+}>();
 </script>
 <template>
   <div>

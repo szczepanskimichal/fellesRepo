@@ -3,18 +3,17 @@
 // import axios from 'axios';
 import EventService from '../services/EventService';
 import { useRouter } from 'vue-router';
-import EventCard from '../components/EventCard.vue';
 
-interface Event {
-  id: number;
-  title: string;
-  description: string;
-  organizer: string;
-  date: string;
-  time: string;
-  location: string;
-  attendees: number;
-}
+import EventCard from '../components/EventCard.vue';
+// import { EventItem } from '@/types';
+// If you have a types file, update the path below accordingly:
+import type { EventItem } from '../types';
+// Or, if you don't have a types file, define EventItem here as a temporary fix:
+//
+// type EventItem = {
+//   id: number;
+//   // add other properties as needed
+// };
 
 // Remove defineProps usage; use props from Options API instead
 
@@ -29,7 +28,7 @@ export default {
   },
   data() {
     return {
-      events: null as Event[] | null,
+      events: null as EventItem[] | null,
       totalEvents: 0
     }
   },
