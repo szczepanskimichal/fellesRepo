@@ -1,0 +1,250 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="no">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tech Conference 2025 – Registration</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand" aria-label="Evento">
+        <span class="brand-mark" aria-hidden="true">EVENTO</span>
+      </div>
+
+      <!-- CSS-only hamburger -->
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle navigation" />
+      <label class="hamburger" for="nav-toggle" aria-label="Open menu">
+        <span aria-hidden="true">☰</span>
+      </label>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="#events">Events</a></li>
+          <li><a href="#venues">Venues</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <form class="nav-search" role="search" aria-label="Search">
+        <label class="sr-only" for="q">Search</label>
+        <input id="q" name="q" type="search" placeholder="Search…" aria-label="Search events" />
+        <button type="submit" aria-label="Submit search">
+          <!-- simple inline svg icon -->
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="11" cy="11" r="6"></circle>
+            <rect x="16" y="16" width="7" height="2" transform="rotate(45 16 16)"></rect>
+          </svg>
+        </button>
+      </form>
+
+      <button class="user-btn" type="button" aria-label="User menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <circle cx="12" cy="9" r="4"></circle>
+          <path d="M4 22c1.8-4 5-6 8-6s6.2 2 8 6" fill="none" stroke="currentColor" stroke-width="2"></path>
+        </svg>
+      </button>
+    </header>
+
+    <section class="hero" id="events" aria-labelledby="event-title">
+      <h1 id="event-title">Tech Conference 2025</h1>
+      <p class="subhead">Three days of workshops, keynotes, and networking.</p>
+
+      <div class="meta" aria-label="Event information">
+        <div class="meta-item">
+          <!-- calendar icon (circle + rect + combination) -->
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <rect x="4" y="6" width="16" height="14" rx="2"></rect>
+            <rect x="7" y="3" width="2" height="5"></rect>
+            <rect x="15" y="3" width="2" height="5"></rect>
+            <circle cx="9" cy="12" r="1.2"></circle>
+            <circle cx="13" cy="12" r="1.2"></circle>
+          </svg>
+          <span><strong>March 15–17, 2025</strong></span>
+        </div>
+
+        <div class="meta-item">
+          <!-- pin icon -->
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M12 22s7-6.1 7-12A7 7 0 0 0 5 10c0 5.9 7 12 7 12Z"></path>
+            <circle cx="12" cy="10" r="2.2"></circle>
+          </svg>
+          <span><strong>Oslo Congress Center</strong></span>
+        </div>
+
+        <div class="meta-item">
+          <!-- mic icon -->
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <rect x="9" y="3" width="6" height="12" rx="3"></rect>
+            <path d="M6 11v1a6 6 0 0 0 12 0v-1" fill="none" stroke="currentColor" stroke-width="2"></path>
+            <path d="M12 18v3" fill="none" stroke="currentColor" stroke-width="2"></path>
+            <rect x="9" y="21" width="6" height="2"></rect>
+          </svg>
+          <span><strong>12 Speakers</strong></span>
+        </div>
+
+        <div class="meta-item">
+          <!-- price tag icon -->
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M3 12l9-9h7l2 2v7l-9 9-9-9Z"></path>
+            <circle cx="16" cy="8" r="1.5"></circle>
+          </svg>
+          <span><strong>From €299</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <main class="content" id="main">
+      <section class="card form-card" aria-labelledby="register-title">
+        <div class="card-head">
+          <h2 id="register-title">Register</h2>
+          <p class="muted">Secure your spot. No payment collected in this prototype.</p>
+        </div>
+
+        <form class="reg-form" action="#" method="post" aria-label="Registration form">
+          <fieldset class="fieldset">
+            <legend>Ticket Type</legend>
+
+            <label class="radio">
+              <input type="radio" name="ticket" value="early" aria-label="Early Bird" />
+              <span>Early Bird</span>
+            </label>
+
+            <label class="radio">
+              <input type="radio" name="ticket" value="regular" aria-label="Regular" checked />
+              <span>Regular</span>
+            </label>
+
+            <label class="radio">
+              <input type="radio" name="ticket" value="vip" aria-label="VIP" />
+              <span>VIP</span>
+            </label>
+          </fieldset>
+
+          <div class="field">
+            <label for="qty">Quantity</label>
+            <div class="qty" role="group" aria-label="Quantity selector (visual only)">
+              <button type="button" class="qty-btn" aria-label="Decrease quantity">−</button>
+              <input id="qty" class="qty-input" type="text" value="2" inputmode="numeric" aria-label="Quantity value" />
+              <button type="button" class="qty-btn" aria-label="Increase quantity">+</button>
+            </div>
+            <p class="hint">Buttons are styled only (no JavaScript required).</p>
+          </div>
+
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" aria-label="Full name" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-label="Email address" />
+          </div>
+
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" aria-label="Company" />
+          </div>
+
+          <div class="field">
+            <label for="diet">Dietary needs</label>
+            <select id="diet" name="diet" aria-label="Dietary needs">
+              <option value="">No preference</option>
+              <option value="veg">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="gf">Gluten free</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" name="terms" aria-label="I agree to terms" />
+            <span>I agree to <a href="#terms">terms</a> <span aria-hidden="true">*</span></span>
+          </label>
+
+          <button class="btn primary" type="submit" aria-label="Submit registration">
+            Submit registration
+          </button>
+        </form>
+      </section>
+
+      <aside class="card sidebar" id="about" aria-label="Sidebar content">
+        <section class="side-block" aria-labelledby="about-title">
+          <h2 id="about-title">About the Event</h2>
+          <p>
+            Join 500+ developers for three days of hands-on workshops, keynotes,
+            and networking. Learn practical frontend techniques, performance optimization,
+            and modern CSS workflows.
+          </p>
+        </section>
+
+        <section class="side-block speakers" aria-labelledby="speakers-title">
+          <h2 id="speakers-title">Featured Speakers</h2>
+
+          <!-- container query target -->
+          <div class="speaker-grid" role="list" aria-label="Speakers list">
+            <!-- speaker 1 -->
+            <div class="speaker-item" role="listitem">
+              <input class="fav-toggle" type="checkbox" id="fav-jane" aria-label="Favorite Jane" />
+              <label class="speaker" for="fav-jane">
+                <span class="avatar" aria-hidden="true">J</span>
+                <span class="speaker-name">Jane</span>
+                <span class="heart" aria-hidden="true">❤</span>
+              </label>
+            </div>
+
+            <!-- speaker 2 -->
+            <div class="speaker-item" role="listitem">
+              <input class="fav-toggle" type="checkbox" id="fav-john" aria-label="Favorite John" />
+              <label class="speaker" for="fav-john">
+                <span class="avatar" aria-hidden="true">J</span>
+                <span class="speaker-name">John</span>
+                <span class="heart" aria-hidden="true">❤</span>
+              </label>
+            </div>
+
+            <!-- speaker 3 -->
+            <div class="speaker-item" role="listitem">
+              <input class="fav-toggle" type="checkbox" id="fav-anna" aria-label="Favorite Anna" />
+              <label class="speaker" for="fav-anna">
+                <span class="avatar" aria-hidden="true">A</span>
+                <span class="speaker-name">Anna</span>
+                <span class="heart" aria-hidden="true">❤</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="side-block" aria-labelledby="schedule-title">
+          <h2 id="schedule-title">Schedule Highlights</h2>
+          <ul class="bullets">
+            <li>Day 1: Frontend Trends</li>
+            <li>Day 2: Performance Optimization</li>
+            <li>Day 3: Workshop Sessions</li>
+          </ul>
+          <a class="link" href="#full-schedule">View full schedule →</a>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <p class="muted">
+        Prototype only. <a href="#main">Back to registration</a>.
+      </p>
+    </footer>
+  </div>
+
+  <!-- anchors just so smooth scrolling has targets -->
+  <div id="venues" hidden></div>
+  <div id="terms" hidden></div>
+  <div id="full-schedule" hidden></div>
+</body>
+
+</html>
